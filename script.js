@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Live Word-by-Word / Letter-by-Letter Typewriter Greeting
+    initTypewriterGreeting();
+
     // Editable LinkedIn Handle System
     initLinkedInHandler();
 
@@ -136,6 +139,50 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Live Word-by-Word Typewriter Greeting Animation
+    function initTypewriterGreeting() {
+        const textElement = document.getElementById('typewriterText');
+        if (!textElement) return;
+
+        const phrases = [
+            "Hello & Welcome! I'm Parikshit Thakur — Machine Learning & Software Engineer.",
+            "Namaste! 🙏 Building Intelligent ML Models, REST APIs & Full-Stack Apps.",
+            "Explore my CardioVision AI project & verified credentials below!"
+        ];
+
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 50;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+
+            if (isDeleting) {
+                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = 30;
+            } else {
+                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 60;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                typingSpeed = 2500; // Pause at end of phrase
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typingSpeed = 500; // Pause before typing next phrase
+            }
+
+            setTimeout(type, typingSpeed);
+        }
+
+        type();
+    }
+
     // Editable LinkedIn URL Handler
     function initLinkedInHandler() {
         const editLinkedinBtn = document.getElementById('editLinkedinBtn');
@@ -167,7 +214,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const resumeStatusMsg = document.getElementById('resumeStatusMsg');
 
         if (resumeFileInput && resumeStatusMsg) {
-            // Load saved resume info if exists
             const savedResumeName = localStorage.getItem('parikshit_resume_filename');
             if (savedResumeName) {
                 resumeStatusMsg.textContent = `Uploaded Active Resume: ${savedResumeName} ✅`;
