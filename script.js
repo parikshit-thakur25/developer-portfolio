@@ -236,25 +236,56 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Resume Upload & Local Save Handler
+    // Resume Upload & Local Storage PDF Handler
     function initResumeUpload() {
         const resumeFileInput = document.getElementById('resumeFileInput');
-        const resumeStatusMsg = document.getElementById('resumeStatusMsg');
+        const noResumePlaceholder = document.getElementById('noResumePlaceholder');
+        const activeResumeContainer = document.getElementById('activeResumeContainer');
+        const activeResumeName = document.getElementById('activeResumeName');
+        const viewActiveResumeBtn = document.getElementById('viewActiveResumeBtn');
+        const deleteActiveResumeBtn = document.getElementById('deleteActiveResumeBtn');
 
-        if (resumeFileInput && resumeStatusMsg) {
-            const savedResumeName = localStorage.getItem('parikshit_resume_filename');
-            if (savedResumeName) {
-                resumeStatusMsg.textContent = `Uploaded Active Resume: ${savedResumeName} ✅`;
-                resumeStatusMsg.classList.remove('hidden');
+        function renderResumeState() {
+            const savedName = localStorage.getItem('parikshit_resume_name');
+            const savedData = localStorage.getItem('parikshit_resume_data');
+
+            if (savedName && savedData && activeResumeContainer && noResumePlaceholder) {
+                noResumePlaceholder.classList.add('hidden');
+                activeResumeContainer.classList.remove('hidden');
+                if (activeResumeName) activeResumeName.textContent = savedName;
+                if (viewActiveResumeBtn) viewActiveResumeBtn.href = savedData;
+            } else if (noResumePlaceholder && activeResumeContainer) {
+                noResumePlaceholder.classList.remove('hidden');
+                activeResumeContainer.classList.add('hidden');
             }
+        }
 
+        renderResumeState();
+
+        if (resumeFileInput) {
             resumeFileInput.addEventListener('change', (e) => {
                 const file = e.target.files[0];
                 if (file) {
-                    localStorage.setItem('parikshit_resume_filename', file.name);
-                    resumeStatusMsg.textContent = `New Resume Uploaded: ${file.name} ✅ (Saved locally)`;
-                    resumeStatusMsg.classList.remove('hidden');
-                    alert(`Successfully uploaded custom resume: ${file.name}!`);
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        const dataUrl = event.target.result;
+                        localStorage.setItem('parikshit_resume_name', file.name);
+                        localStorage.setItem('parikshit_resume_data', dataUrl);
+                        renderResumeState();
+                        alert(`Successfully uploaded custom resume: ${file.name}!`);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        if (deleteActiveResumeBtn) {
+            deleteActiveResumeBtn.addEventListener('click', () => {
+                if (confirm('Are you sure you want to delete your uploaded resume PDF?')) {
+                    localStorage.removeItem('parikshit_resume_name');
+                    localStorage.removeItem('parikshit_resume_data');
+                    renderResumeState();
+                    alert('Resume PDF deleted.');
                 }
             });
         }

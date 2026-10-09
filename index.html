@@ -115,10 +115,6 @@
                         <span>Explore Projects</span>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
-                    <button id="openResumeBtn" class="btn-secondary-glass">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                        <span>View / Download Resume</span>
-                    </button>
                     <a href="https://github.com/parikshit-thakur25" target="_blank" class="btn-icon-glass" title="GitHub Profile">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                     </a>
@@ -284,47 +280,42 @@
         </div>
     </section>
 
-    <!-- SECTION 3: Resume Section (Download & Upload PDF) -->
+    <!-- SECTION 3: Resume Upload Section -->
     <section id="resume" class="section-container">
-        <div class="section-header">
-            <span class="sub-heading">// CURRICULUM VITAE</span>
-            <h2>Developer Resume</h2>
-            <p>View, print, or manage your official developer resume document.</p>
+        <div class="section-header-flex">
+            <div class="section-header">
+                <span class="sub-heading">// CURRICULUM VITAE</span>
+                <h2>Official Resume Document</h2>
+                <p>Upload and manage your official developer resume PDF file.</p>
+            </div>
+
+            <label for="resumeFileInput" class="btn-white-sm upload-btn-label owner-only hidden">
+                <span>Upload Resume PDF 📤</span>
+                <input type="file" id="resumeFileInput" accept=".pdf" class="hidden-file-input">
+            </label>
         </div>
 
         <div class="resume-section-card">
-            <div class="resume-card-header">
-                <div class="res-profile-title">
-                    <h3>Parikshit Thakur — Resume Document</h3>
-                    <p class="res-subtitle">Full-Stack Developer (MERN Stack) & Machine Learning Engineer</p>
+            <div class="resume-card-body" id="resumeCardBody">
+                <div id="noResumePlaceholder" class="empty-resume-placeholder">
+                    <div class="empty-icon">📄</div>
+                    <h3>No Resume PDF Uploaded Yet</h3>
+                    <p>Unlock Owner Admin Mode to upload your custom resume PDF file.</p>
                 </div>
 
-                <div class="resume-actions-row">
-                    <button id="downloadResumeBtn" onclick="window.print()" class="btn-white-sm">
-                        <span>View / Print PDF ↗</span>
-                    </button>
-
-                    <label for="resumeFileInput" class="btn-white-sm outline upload-btn-label owner-only hidden">
-                        <span>Upload PDF 📤</span>
-                        <input type="file" id="resumeFileInput" accept=".pdf" class="hidden-file-input">
-                    </label>
-                </div>
-            </div>
-            
-            <div class="resume-card-body">
-                <div id="resumeStatusMsg" class="status-box hidden"></div>
-
-                <div class="res-row">
-                    <span class="res-label">Contact:</span>
-                    <span class="res-val">✉️ work.parikshit07@gmail.com • 🌐 parikshit07.tech • 🐙 github.com/parikshit-thakur25</span>
-                </div>
-                <div class="res-row">
-                    <span class="res-label">Education:</span>
-                    <span class="res-val">Bachelor of Technology (B.Tech) in Computer Science & Engineering</span>
-                </div>
-                <div class="res-row">
-                    <span class="res-label">Core Focus:</span>
-                    <span class="res-val">Full-Stack Web Development (MERN Stack: MongoDB, Express, React, Node.js), TailwindCSS UI Design, REST APIs, & Machine Learning (Scikit-Learn, Supervised ML Pipelines)</span>
+                <div id="activeResumeContainer" class="active-resume-box hidden">
+                    <div class="resume-info-row">
+                        <div class="resume-icon-badge">📑</div>
+                        <div class="resume-file-details">
+                            <span class="cert-issuer">Official Developer Document</span>
+                            <h3 id="activeResumeName">Parikshit_Thakur_Resume.pdf</h3>
+                            <span class="cert-date" id="activeResumeDate">Active PDF Document • Verified ✅</span>
+                        </div>
+                    </div>
+                    <div class="cert-actions-flex">
+                        <a id="viewActiveResumeBtn" href="#" target="_blank" class="btn-white-sm">View PDF ↗</a>
+                        <button id="deleteActiveResumeBtn" class="btn-delete-card owner-only hidden">Delete 🗑️</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -415,40 +406,6 @@
     <footer class="footer">
         <p>© 2026 Parikshit Thakur • Domain: <a href="https://parikshit07.tech" target="_blank">parikshit07.tech</a> • Built with Modern Web Standards</p>
     </footer>
-
-    <!-- Interactive Resume Modal -->
-    <div id="resumeModal" class="modal-backdrop hidden">
-        <div class="modal-glass-card">
-            <div class="modal-header">
-                <h3>Parikshit Thakur — Developer Resume</h3>
-                <button id="closeResumeBtn" class="btn-close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="resume-preview">
-                    <h4>PARIKSHIT THAKUR</h4>
-                    <p class="res-sub">Full-Stack (MERN, TailwindCSS) & Machine Learning Engineer</p>
-                    <p class="res-email">✉️ work.parikshit07@gmail.com | 🌐 parikshit07.tech | 🐙 github.com/parikshit-thakur25</p>
-                    <hr>
-                    <h5>TECHNICAL SKILLS</h5>
-                    <p><strong>Full-Stack & Web:</strong> MERN Stack (MongoDB, Express, React, Node.js), TailwindCSS, JavaScript ES6+, HTML5/CSS3</p>
-                    <p><strong>Machine Learning & Data:</strong> Python, Scikit-Learn, SVM, Random Forest, Pandas, NumPy, Joblib</p>
-                    <p><strong>Backend & Tools:</strong> Flask, REST APIs, Gunicorn, Pytest, Git, GitHub, macOS Terminal, Render</p>
-                    <hr>
-                    <h5>FEATURED PROJECTS</h5>
-                    <p><strong>CardioVision AI — Heart Disease Risk Assessment Engine</strong></p>
-                    <ul>
-                        <li>Evaluated 6 ML algorithms via 5-Fold Stratified Cross Validation. Selected SVM (93.5% ROC-AUC).</li>
-                        <li>Built Flask REST API with strict input range validation (HTTP 422).</li>
-                        <li>Designed Deep Crimson Cardiology Glassmorphic UI with animated SVG risk gauge.</li>
-                        <li>Deployed live on Render Cloud: <code>https://heart-disease-prediction-f37g.onrender.com</code></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button onclick="window.print()" class="btn-primary-glow">Print / Save as PDF</button>
-            </div>
-        </div>
-    </div>
 
     <script src="script.js"></script>
 </body>
