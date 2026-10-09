@@ -191,21 +191,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const editLinkedinBtn = document.getElementById('editLinkedinBtn');
         const linkedinBtn = document.getElementById('linkedinBtn');
         const linkedinDisplay = document.getElementById('linkedinDisplay');
+        const defaultLinkedin = 'https://www.linkedin.com/in/parikshit-thakur-1a098a2a3';
 
         const savedUrl = localStorage.getItem('parikshit_linkedin_url');
-        if (savedUrl && linkedinBtn && linkedinDisplay) {
-            linkedinBtn.href = savedUrl;
-            linkedinDisplay.textContent = savedUrl.replace('https://', '');
+        if (savedUrl && !savedUrl.includes('parikshit-thakur-1a098a2a3')) {
+            localStorage.removeItem('parikshit_linkedin_url'); // Clear old generic cached URL
+        }
+
+        const activeUrl = localStorage.getItem('parikshit_linkedin_url') || defaultLinkedin;
+        if (linkedinBtn && linkedinDisplay) {
+            linkedinBtn.href = activeUrl;
+            linkedinDisplay.textContent = activeUrl.replace('https://', '').replace('http://', '');
         }
 
         if (editLinkedinBtn) {
             editLinkedinBtn.addEventListener('click', () => {
-                const newUrl = prompt('Enter your LinkedIn profile URL (e.g., https://linkedin.com/in/yourname):', linkedinBtn ? linkedinBtn.href : '');
+                const newUrl = prompt('Enter your LinkedIn profile URL:', linkedinBtn ? linkedinBtn.href : defaultLinkedin);
                 if (newUrl && newUrl.trim() !== '') {
                     const formattedUrl = newUrl.startsWith('http') ? newUrl.trim() : `https://${newUrl.trim()}`;
                     localStorage.setItem('parikshit_linkedin_url', formattedUrl);
                     if (linkedinBtn) linkedinBtn.href = formattedUrl;
-                    if (linkedinDisplay) linkedinDisplay.textContent = formattedUrl.replace('https://', '');
+                    if (linkedinDisplay) linkedinDisplay.textContent = formattedUrl.replace('https://', '').replace('http://', '');
                 }
             });
         }
