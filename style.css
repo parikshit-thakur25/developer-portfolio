@@ -1,8 +1,8 @@
 :root {
-    --bg-dark: #0a0c16;
-    --card-bg: rgba(18, 22, 40, 0.7);
-    --card-border: rgba(255, 255, 255, 0.08);
-    --card-glow: rgba(6, 182, 212, 0.15);
+    --bg-dark: #050711;
+    --card-bg: rgba(14, 18, 36, 0.72);
+    --card-border: rgba(255, 255, 255, 0.09);
+    --card-glow: rgba(6, 182, 212, 0.18);
     --accent-cyan: #06b6d4;
     --accent-violet: #8b5cf6;
     --accent-crimson: #f43f5e;
@@ -12,6 +12,7 @@
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Plus Jakarta Sans', sans-serif;
     --font-mono: 'Fira Code', monospace;
+    --font-handwriting: 'Caveat', cursive;
 }
 
 * {
@@ -31,30 +32,165 @@ body {
     min-height: 100vh;
 }
 
+/* Full-Screen Intro Splash Screen Overlay */
+.intro-splash-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #04050a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    overflow: hidden;
+    transition: transform 0.85s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.85s ease;
+}
+
+.intro-splash-overlay.splash-exit-anim {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.splash-ambient-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.18), rgba(139, 92, 246, 0.12), transparent 70%);
+    filter: blur(120px);
+    pointer-events: none;
+    animation: splashPulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes splashPulse {
+    0% { transform: scale(0.9) translate(0, 0); opacity: 0.7; }
+    100% { transform: scale(1.1) translate(20px, -20px); opacity: 1; }
+}
+
+.splash-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+}
+
+.splash-text-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 130px;
+}
+
+.splash-handwriting-text {
+    font-family: var(--font-handwriting);
+    font-size: clamp(3.8rem, 9.5vw, 8rem);
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 1px;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.4), 0 0 60px rgba(6, 182, 212, 0.3);
+    line-height: 1.1;
+}
+
+.splash-cursor {
+    font-family: var(--font-mono);
+    font-size: clamp(3rem, 7vw, 6rem);
+    color: var(--accent-cyan);
+    margin-left: 6px;
+    animation: blinkCursor 0.8s infinite;
+}
+
+@keyframes blinkCursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.splash-subtitle {
+    font-family: var(--font-mono);
+    font-size: clamp(0.85rem, 2vw, 1.1rem);
+    color: var(--text-muted);
+    margin-top: 1.5rem;
+    letter-spacing: 2px;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.splash-subtitle.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.splash-skip-btn {
+    position: absolute;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    z-index: 3;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #a0aec0;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: 1px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.splash-skip-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--accent-cyan);
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+    transform: translateY(-2px);
+}
+
+.splash-skip-btn .key-hint {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+}
+
 /* Subtle Ambient Lighting Orbs */
 .ambient-orb {
     position: fixed;
     border-radius: 50%;
     filter: blur(140px);
-    opacity: 0.25;
+    opacity: 0.28;
     pointer-events: none;
     z-index: 0;
 }
 
 .orb-1 {
-    width: 450px;
-    height: 450px;
+    width: 500px;
+    height: 500px;
     background: radial-gradient(circle, var(--accent-cyan), transparent 70%);
-    top: -100px;
-    left: -100px;
+    top: -120px;
+    left: -120px;
 }
 
 .orb-2 {
-    width: 500px;
-    height: 500px;
+    width: 550px;
+    height: 550px;
     background: radial-gradient(circle, var(--accent-violet), transparent 70%);
-    top: 40%;
-    right: -150px;
+    top: 35%;
+    right: -160px;
+}
+
+.orb-3 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(244, 63, 94, 0.16), transparent 70%);
+    bottom: -150px;
+    left: 25%;
 }
 
 .grid-overlay {
@@ -63,7 +199,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px);
     background-size: 32px 32px;
     pointer-events: none;
     z-index: 0;

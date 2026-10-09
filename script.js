@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Full-Screen Intro Splash Screen Preloader
+    initIntroSplash();
+
     // Live Word-by-Word / Letter-by-Letter Typewriter Greeting
     initTypewriterGreeting();
 
@@ -326,4 +329,87 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Full-Screen Intro Splash Animation (hello, -> parikshit -> Main Interface)
+    function initIntroSplash() {
+        const introSplash = document.getElementById('introSplash');
+        const splashText = document.getElementById('splashText');
+        const splashSubtitle = document.getElementById('splashSubtitle');
+        const skipSplashBtn = document.getElementById('skipSplashBtn');
+
+        if (!introSplash || !splashText) return;
+
+        let isSkipped = false;
+        let animationTimer = null;
+
+        function closeSplash() {
+            if (isSkipped) return;
+            isSkipped = true;
+            if (animationTimer) clearTimeout(animationTimer);
+
+            introSplash.classList.add('splash-exit-anim');
+            setTimeout(() => {
+                introSplash.style.display = 'none';
+            }, 850);
+        }
+
+        if (skipSplashBtn) {
+            skipSplashBtn.addEventListener('click', closeSplash);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === 'Escape' || e.key === ' ') {
+                closeSplash();
+            }
+        });
+
+        // Words Sequence
+        const words = ['hello ,', 'parikshit'];
+        let wordIdx = 0;
+        let charIdx = 0;
+        let isDeleting = false;
+
+        function typeStep() {
+            if (isSkipped) return;
+
+            const currentWord = words[wordIdx];
+
+            if (!isDeleting) {
+                splashText.textContent = currentWord.substring(0, charIdx + 1);
+                charIdx++;
+
+                if (charIdx === currentWord.length) {
+                    if (wordIdx === 0) {
+                        // After 'hello ,', pause then delete
+                        animationTimer = setTimeout(() => {
+                            isDeleting = true;
+                            typeStep();
+                        }, 750);
+                    } else if (wordIdx === 1) {
+                        // After 'parikshit', show subtitle & pause before exit
+                        if (splashSubtitle) splashSubtitle.classList.add('show');
+                        animationTimer = setTimeout(() => {
+                            closeSplash();
+                        }, 1200);
+                    }
+                    return;
+                }
+                animationTimer = setTimeout(typeStep, 75);
+            } else {
+                splashText.textContent = currentWord.substring(0, charIdx - 1);
+                charIdx--;
+
+                if (charIdx === 0) {
+                    isDeleting = false;
+                    wordIdx++;
+                    animationTimer = setTimeout(typeStep, 350);
+                    return;
+                }
+                animationTimer = setTimeout(typeStep, 40);
+            }
+        }
+
+        // Start typing after brief initial pause
+        animationTimer = setTimeout(typeStep, 300);
+    }
 });

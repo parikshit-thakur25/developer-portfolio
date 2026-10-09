@@ -9,14 +9,31 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fira+Code:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Full-Screen Intro Splash Preloader Overlay -->
+    <div id="introSplash" class="intro-splash-overlay">
+        <div class="splash-ambient-glow"></div>
+        <div class="splash-content">
+            <div class="splash-text-wrapper">
+                <span id="splashText" class="splash-handwriting-text"></span>
+                <span class="splash-cursor">|</span>
+            </div>
+            <p class="splash-subtitle" id="splashSubtitle">// Full-Stack & Machine Learning Engineer</p>
+        </div>
+        <button id="skipSplashBtn" class="splash-skip-btn">
+            <span>SKIP</span>
+            <span class="key-hint">↵</span>
+        </button>
+    </div>
+
     <!-- Subtle Ambient Lighting Orbs -->
     <div class="ambient-orb orb-1"></div>
     <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
     <div class="grid-overlay"></div>
 
     <!-- Top Live Hello Word-by-Word Typewriter Banner -->
