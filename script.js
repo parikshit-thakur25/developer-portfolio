@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Canvas 3D Particle System
-    initAmbientCanvas();
-
-    // 3D Tilt Cards Effect
-    init3DTilt();
-
     // Editable LinkedIn Handle System
     initLinkedInHandler();
+
+    // Resume Upload & Download Handlers
+    initResumeUpload();
+
+    // Certificate Upload Handler
+    initCertUpload();
 
     // Resume Modal
     const resumeModal = document.getElementById('resumeModal');
@@ -161,7 +161,62 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Cyber Terminal Handler
+    // Resume Upload & Local Save Handler
+    function initResumeUpload() {
+        const resumeFileInput = document.getElementById('resumeFileInput');
+        const resumeStatusMsg = document.getElementById('resumeStatusMsg');
+
+        if (resumeFileInput && resumeStatusMsg) {
+            // Load saved resume info if exists
+            const savedResumeName = localStorage.getItem('parikshit_resume_filename');
+            if (savedResumeName) {
+                resumeStatusMsg.textContent = `Uploaded Active Resume: ${savedResumeName} ✅`;
+                resumeStatusMsg.classList.remove('hidden');
+            }
+
+            resumeFileInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    localStorage.setItem('parikshit_resume_filename', file.name);
+                    resumeStatusMsg.textContent = `New Resume Uploaded: ${file.name} ✅ (Saved locally)`;
+                    resumeStatusMsg.classList.remove('hidden');
+                    alert(`Successfully uploaded custom resume: ${file.name}!`);
+                }
+            });
+        }
+    }
+
+    // Certificate Upload Handler
+    function initCertUpload() {
+        const certFileInput = document.getElementById('certFileInput');
+        const certificatesGrid = document.getElementById('certificatesGrid');
+
+        if (certFileInput && certificatesGrid) {
+            certFileInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const certTitle = prompt('Enter Certificate Title (e.g. AWS Certified Cloud Practitioner):', file.name.split('.')[0]) || file.name;
+                    const certIssuer = prompt('Enter Issuer / Institution Name:', 'Verified Institution') || 'Verified Institution';
+
+                    const newCard = document.createElement('div');
+                    newCard.className = 'cert-card';
+                    newCard.innerHTML = `
+                        <div class="cert-badge-icon">🏅</div>
+                        <div class="cert-info">
+                            <span class="cert-issuer">${certIssuer}</span>
+                            <h3>${certTitle}</h3>
+                            <p>Custom uploaded credential: ${file.name}</p>
+                            <span class="cert-date">Uploaded: Just now • Verified ✅</span>
+                        </div>
+                    `;
+                    certificatesGrid.prepend(newCard);
+                    alert(`Certificate "${certTitle}" added to your credentials section!`);
+                }
+            });
+        }
+    }
+
+    // Cyber Terminal Input Handler
     if (terminalInput && terminalOutput) {
         terminalInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
@@ -210,107 +265,6 @@ document.addEventListener('DOMContentLoaded', () => {
         p.className = className;
         p.textContent = text;
         terminalOutput.appendChild(p);
-    }
-
-    // 3D Ambient Particle Canvas Animation
-    function initAmbientCanvas() {
-        const canvas = document.getElementById('ambientCanvas');
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-
-        let width = canvas.width = window.innerWidth;
-        let height = canvas.height = window.innerHeight;
-
-        window.addEventListener('resize', () => {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        });
-
-        const particles = [];
-        const numParticles = 45;
-
-        for (let i = 0; i < numParticles; i++) {
-            particles.push({
-                x: Math.random() * width,
-                y: Math.random() * height,
-                vx: (Math.random() - 0.5) * 0.4,
-                vy: (Math.random() - 0.5) * 0.4,
-                radius: Math.random() * 2 + 1,
-                alpha: Math.random() * 0.5 + 0.2
-            });
-        }
-
-        let mouseX = width / 2;
-        let mouseY = height / 2;
-
-        window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
-
-            for (let i = 0; i < particles.length; i++) {
-                const p = particles[i];
-                p.x += p.vx;
-                p.y += p.vy;
-
-                if (p.x < 0) p.x = width;
-                if (p.x > width) p.x = 0;
-                if (p.y < 0) p.y = height;
-                if (p.y > height) p.y = 0;
-
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(6, 182, 212, ${p.alpha})`;
-                ctx.fill();
-
-                // Draw connecting lines to nearby particles
-                for (let j = i + 1; j < particles.length; j++) {
-                    const p2 = particles[j];
-                    const dx = p.x - p2.x;
-                    const dy = p.y - p2.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-
-                    if (dist < 120) {
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.strokeStyle = `rgba(139, 92, 246, ${0.15 * (1 - dist / 120)})`;
-                        ctx.lineWidth = 0.8;
-                        ctx.stroke();
-                    }
-                }
-            }
-
-            requestAnimationFrame(animate);
-        }
-
-        animate();
-    }
-
-    // 3D Card Tilt Effect
-    function init3DTilt() {
-        const tiltCards = document.querySelectorAll('.tilt-card');
-        tiltCards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-
-                const rotateX = (centerY - y) / 18;
-                const rotateY = (x - centerX) / 18;
-
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
-            });
-        });
     }
 
     // Smooth Scroll

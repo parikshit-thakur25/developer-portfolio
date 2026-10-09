@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parikshit Thakur — Machine Learning & Software Engineer</title>
-    <meta name="description" content="Official developer portfolio of Parikshit Thakur. Machine Learning Engineer, Full-Stack Developer, and CSE Student showcasing CardioVision AI and software engineering projects.">
+    <meta name="description" content="Official developer portfolio of Parikshit Thakur. Machine Learning Engineer, Full-Stack Developer, and CSE Student.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,9 +14,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- 3D Interactive Ambient Canvas -->
-    <canvas id="ambientCanvas"></canvas>
+    <!-- Subtle Ambient Lighting Orbs -->
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
     <div class="grid-overlay"></div>
+
+    <!-- Top Live Hello Ticker Message Banner -->
+    <div class="live-hello-banner">
+        <div class="hello-container">
+            <span class="live-indicator">✨ LIVE</span>
+            <span class="hello-text">Hello & Welcome! I'm <strong>Parikshit Thakur</strong> — ML Engineer & CSE Student. Open for SWE & Machine Learning Opportunities 🟢</span>
+            <a href="#contact" class="hello-link">Get In Touch →</a>
+        </div>
+    </div>
 
     <!-- Navigation Header -->
     <nav class="navbar">
@@ -68,17 +78,17 @@
     <header id="about" class="hero-section">
         <div class="hero-container">
             <div class="hero-content">
-                <div class="hero-badge glow-badge">
+                <div class="hero-badge">
                     <span class="pulse-dot"></span>
                     <span>CSE Student & Machine Learning Engineer</span>
                 </div>
 
                 <h1 class="hero-title">
-                    Building <span class="gradient-text">Intelligent ML Systems</span> & Ambient Web Apps.
+                    Building <span class="gradient-text">Intelligent ML Systems</span>, Full-Stack Apps & Scalable Software.
                 </h1>
 
                 <p class="hero-description">
-                    Hi, I'm <strong>Parikshit Thakur</strong>. I specialize in data-leakage-free machine learning pipelines, production REST APIs, and full-stack software applications. Explore my work below.
+                    Hi, I'm <strong>Parikshit Thakur</strong>. I design data-leakage-free machine learning pipelines, production REST APIs, and modern ambient web apps. Explore my projects, verified credentials, and interactive terminal below.
                 </p>
 
                 <div class="hero-cta-group">
@@ -88,7 +98,7 @@
                     </a>
                     <button id="openResumeBtn" class="btn-secondary-glass">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                        <span>View / Export Resume</span>
+                        <span>View / Download Resume</span>
                     </button>
                     <a href="https://github.com/parikshit-thakur25" target="_blank" class="btn-icon-glass" title="GitHub Profile">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -99,7 +109,7 @@
                 <div id="ownerAdminBanner" class="owner-admin-banner hidden">
                     <div class="admin-banner-header">
                         <span class="unlocked-tag">🔓 Owner Admin Mode Unlocked</span>
-                        <p>You have full administrative privileges to view internal notes and manage projects.</p>
+                        <p>You have full administrative privileges to manage projects and upload resume/certificates.</p>
                     </div>
                     <div class="admin-action-row">
                         <button id="lockNowBtn" class="btn-admin-action danger">Lock Admin Mode</button>
@@ -108,7 +118,7 @@
             </div>
 
             <!-- Cyber Terminal Interactive Widget -->
-            <div class="hero-terminal-card tilt-card">
+            <div class="hero-terminal-card">
                 <div class="terminal-header-bar">
                     <div class="terminal-dots">
                         <span class="dot red"></span>
@@ -121,7 +131,7 @@
                     <p class="term-line"><span class="term-prompt">parikshit@local:~$</span> whoami</p>
                     <p class="term-response cyan">&gt; Parikshit Thakur — Machine Learning & Software Engineer</p>
                     <p class="term-line"><span class="term-prompt">parikshit@local:~$</span> status</p>
-                    <p class="term-response green">&gt; Status: 🟢 Open for SWE & ML Internships / Roles</p>
+                    <p class="term-response green">&gt; Status: 🟢 Open for SWE & ML Roles</p>
                     <p class="term-line hint-text">&gt; Type <span class="term-cmd">'help'</span>, <span class="term-cmd">'projects'</span>, <span class="term-cmd">'skills'</span>, or <span class="term-cmd">'clear'</span> below:</p>
                 </div>
                 <div class="terminal-input-row">
@@ -136,13 +146,13 @@
     <section id="contact" class="section-container">
         <div class="section-header">
             <span class="sub-heading">// GET IN TOUCH</span>
-            <h2>Contact & Social Network Cards</h2>
-            <p>Connect with me across official channels, email, LinkedIn, and GitHub.</p>
+            <h2>Contact & Social Cards</h2>
+            <p>Direct communication channels, LinkedIn network, and source control repositories.</p>
         </div>
 
         <div class="contact-cards-grid">
             <!-- Email Card -->
-            <div class="contact-card-glass email-card tilt-card">
+            <div class="contact-card-glass email-card">
                 <div class="card-icon-header">
                     <div class="card-icon-circle email-glow">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -158,14 +168,14 @@
             </div>
 
             <!-- LinkedIn Card -->
-            <div class="contact-card-glass linkedin-card tilt-card">
+            <div class="contact-card-glass linkedin-card">
                 <div class="card-icon-header">
                     <div class="card-icon-circle linkedin-glow">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.74a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z"/></svg>
                     </div>
                     <span class="card-badge">LinkedIn Profile</span>
                 </div>
-                <h3>Connect on LinkedIn</h3>
+                <h3>LinkedIn Profile</h3>
                 <p class="card-text-val" id="linkedinDisplay">linkedin.com/in/parikshit-thakur</p>
                 <div class="card-action-row">
                     <a href="https://linkedin.com/in/parikshit-thakur" id="linkedinBtn" target="_blank" class="btn-card-action linkedin-btn">Open Profile ↗</a>
@@ -174,22 +184,22 @@
             </div>
 
             <!-- GitHub Card -->
-            <div class="contact-card-glass github-card tilt-card">
+            <div class="contact-card-glass github-card">
                 <div class="card-icon-header">
                     <div class="card-icon-circle github-glow">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                     </div>
-                    <span class="card-badge">Source Repositories</span>
+                    <span class="card-badge">Source Control</span>
                 </div>
                 <h3>GitHub Account</h3>
                 <p class="card-text-val">@parikshit-thakur25</p>
                 <div class="card-action-row">
-                    <a href="https://github.com/parikshit-thakur25" target="_blank" class="btn-card-action github-btn">View GitHub ↗</a>
+                    <a href="https://github.com/parikshit-thakur25" target="_blank" class="btn-card-action github-btn">View Repos ↗</a>
                 </div>
             </div>
 
             <!-- Location & Status Card -->
-            <div class="contact-card-glass status-card tilt-card">
+            <div class="contact-card-glass status-card">
                 <div class="card-icon-header">
                     <div class="card-icon-circle status-glow">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -197,9 +207,9 @@
                     <span class="card-badge green-badge">Active Status</span>
                 </div>
                 <h3>Location & Availability</h3>
-                <p class="card-text-val">📍 India • Available Remote / On-Site</p>
+                <p class="card-text-val">📍 India • Open for Remote & On-Site</p>
                 <div class="card-action-row">
-                    <span class="status-indicator-tag">🟢 Open for Internships / SWE</span>
+                    <span class="status-indicator-tag">🟢 Available for Opportunities</span>
                 </div>
             </div>
         </div>
@@ -208,19 +218,19 @@
     <!-- SECTION 2: Featured Work & Projects Showcase -->
     <section id="projects" class="section-container">
         <div class="section-header">
-            <span class="sub-heading">// FEATURED PROJECTS</span>
+            <span class="sub-heading">// FEATURED WORK</span>
             <h2>Production Engineering Projects</h2>
-            <p>Deployed machine learning applications, REST API services, and algorithm implementations.</p>
+            <p>Deployed machine learning models, REST APIs, and application code bases.</p>
         </div>
 
         <div class="projects-list-grid">
-            <!-- Project 1: CardioVision AI -->
-            <div class="project-glass-card tilt-card">
+            <!-- Project Card: CardioVision AI -->
+            <div class="project-glass-card">
                 <div class="project-header-bar">
                     <div class="project-tags">
                         <span class="tag ml">SVM Classifier</span>
                         <span class="tag backend">Flask REST API</span>
-                        <span class="tag ui">Deep Crimson Glassmorphic UI</span>
+                        <span class="tag ui">Deep Crimson Cardiology UI</span>
                         <span class="tag devops">Render Live 🚀</span>
                     </div>
                     <span class="visibility-status public">Live Application</span>
@@ -240,16 +250,6 @@
                         <span class="hl-icon">🛡️</span>
                         <span><strong>Flask REST API</strong> with strict physiological input range validation (HTTP 422).</span>
                     </div>
-                    <div class="highlight-item">
-                        <span class="hl-icon">🎨</span>
-                        <span><strong>Deep Crimson Cardiology UI</strong> featuring dynamic ambient lighting & SVG risk gauge.</span>
-                    </div>
-                </div>
-
-                <!-- Owner Secret Notes (Visible only when unlocked) -->
-                <div class="owner-private-notes owner-only hidden">
-                    <span class="notes-title">📝 Owner Notes & Metadata (Private):</span>
-                    <p>Dataset: UCI Heart Disease (918 instances). Saved model artifact at <code>models/best_model.joblib</code>. Pytest suite 100% passing. Render app auto-deploys from <code>main</code> branch.</p>
                 </div>
 
                 <div class="project-links">
@@ -267,26 +267,36 @@
         </div>
     </section>
 
-    <!-- SECTION 3: Interactive Resume & PDF Section -->
+    <!-- SECTION 3: Resume Section (Download & Upload PDF) -->
     <section id="resume" class="section-container">
         <div class="section-header">
             <span class="sub-heading">// CURRICULUM VITAE</span>
-            <h2>Developer Resume & Profile</h2>
-            <p>Comprehensive overview of education, technical experience, and core skills.</p>
+            <h2>Developer Resume</h2>
+            <p>View, download, or update your official developer resume PDF document.</p>
         </div>
 
-        <div class="resume-section-card tilt-card">
+        <div class="resume-section-card">
             <div class="resume-card-header">
                 <div class="res-profile-title">
-                    <h3>Parikshit Thakur</h3>
-                    <p class="res-subtitle">Computer Science & Engineering Student | ML & Full-Stack Developer</p>
+                    <h3>Parikshit Thakur — Resume Document</h3>
+                    <p class="res-subtitle">Machine Learning Engineer & CSE Student</p>
                 </div>
-                <button onclick="window.print()" class="btn-primary-glow btn-sm">
-                    <span>🖨️ Export PDF</span>
-                </button>
+
+                <div class="resume-actions-row">
+                    <button id="downloadResumeBtn" onclick="window.print()" class="btn-primary-glow btn-sm">
+                        <span>📥 Download PDF</span>
+                    </button>
+
+                    <label for="resumeFileInput" class="btn-secondary-glass btn-sm upload-btn-label">
+                        <span>📤 Upload New Resume PDF</span>
+                        <input type="file" id="resumeFileInput" accept=".pdf" class="hidden-file-input">
+                    </label>
+                </div>
             </div>
             
             <div class="resume-card-body">
+                <div id="resumeStatusMsg" class="status-box hidden"></div>
+
                 <div class="res-row">
                     <span class="res-label">Contact:</span>
                     <span class="res-val">✉️ work.parikshit07@gmail.com • 🌐 parikshit07.tech • 🐙 github.com/parikshit-thakur25</span>
@@ -297,22 +307,29 @@
                 </div>
                 <div class="res-row">
                     <span class="res-label">Core Focus:</span>
-                    <span class="res-val">Supervised Machine Learning, Feature Engineering, RESTful APIs, Front-End UI Architecture</span>
+                    <span class="res-val">Supervised Machine Learning, Feature Scaling, Model Evaluation, RESTful Flask APIs</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 4: Verified Credentials & Badges Section -->
+    <!-- SECTION 4: Certificates Section (View & Upload) -->
     <section id="certificates" class="section-container">
-        <div class="section-header">
-            <span class="sub-heading">// CREDENTIALS & ACCOMPLISHMENTS</span>
-            <h2>Verified Certificates & Badges</h2>
-            <p>Certified coursework, specialized training, and academic credentials.</p>
+        <div class="section-header-flex">
+            <div class="section-header">
+                <span class="sub-heading">// CREDENTIALS & ACCOMPLISHMENTS</span>
+                <h2>Verified Certificates & Badges</h2>
+                <p>Certified coursework, specialized training, and academic credentials.</p>
+            </div>
+
+            <label for="certFileInput" class="btn-secondary-glass btn-sm upload-btn-label">
+                <span>➕ Upload New Certificate</span>
+                <input type="file" id="certFileInput" accept=".pdf,image/*" class="hidden-file-input">
+            </label>
         </div>
 
-        <div class="certificates-grid">
-            <div class="cert-card tilt-card">
+        <div class="certificates-grid" id="certificatesGrid">
+            <div class="cert-card">
                 <div class="cert-badge-icon">📜</div>
                 <div class="cert-info">
                     <span class="cert-issuer">GitHub Global Campus</span>
@@ -322,7 +339,7 @@
                 </div>
             </div>
 
-            <div class="cert-card tilt-card">
+            <div class="cert-card">
                 <div class="cert-badge-icon">🤖</div>
                 <div class="cert-info">
                     <span class="cert-issuer">Computer Science & ML Training</span>
@@ -343,7 +360,7 @@
         </div>
 
         <div class="skills-grid">
-            <div class="skill-card tilt-card">
+            <div class="skill-card">
                 <div class="skill-icon-box ml-icon">🤖</div>
                 <h3>Machine Learning</h3>
                 <p>SVM, Random Forest, Logistic Regression, KNN, Decision Trees, Naive Bayes, Cross-Validation.</p>
@@ -352,7 +369,7 @@
                 </div>
             </div>
 
-            <div class="skill-card tilt-card">
+            <div class="skill-card">
                 <div class="skill-icon-box data-icon">📊</div>
                 <h3>Data Science & Analytics</h3>
                 <p>EDA, Median Imputation, Standard Scaling, One-Hot Encoding, Data Leakage Prevention.</p>
@@ -361,7 +378,7 @@
                 </div>
             </div>
 
-            <div class="skill-card tilt-card">
+            <div class="skill-card">
                 <div class="skill-icon-box backend-icon">⚙️</div>
                 <h3>Backend & APIs</h3>
                 <p>RESTful APIs, Payload Validation, Error Codes (422, 500), Production WSGI Server.</p>
@@ -370,7 +387,7 @@
                 </div>
             </div>
 
-            <div class="skill-card tilt-card">
+            <div class="skill-card">
                 <div class="skill-icon-box ui-icon">🎨</div>
                 <h3>Frontend & UI Design</h3>
                 <p>Responsive Layouts, Glassmorphism, Micro-Animations, SVG Gauges, Fetch API.</p>
