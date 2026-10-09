@@ -280,7 +280,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="cert-issuer">${certIssuer}</span>
                             <h3>${certTitle}</h3>
                             <p>Custom uploaded credential: ${file.name}</p>
-                            <span class="cert-date">Uploaded: Just now • Verified ✅</span>
+                            <div class="cert-card-footer">
+                                <span class="cert-date">Uploaded: Just now • Verified ✅</span>
+                                <div class="cert-actions-flex">
+                                    <button class="btn-delete-card owner-only ${isOwnerUnlocked ? '' : 'hidden'}" onclick="if(confirm('Delete this certificate card?')) this.closest('.cert-card').remove();">Delete 🗑️</button>
+                                </div>
+                            </div>
                         </div>
                     `;
                     certificatesGrid.prepend(newCard);

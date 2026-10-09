@@ -1135,6 +1135,33 @@ body {
     flex-wrap: wrap;
 }
 
+.cert-actions-flex {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-delete-card {
+    background: rgba(244, 63, 94, 0.12) !important;
+    color: #f43f5e !important;
+    border: 1px solid rgba(244, 63, 94, 0.3) !important;
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.38rem 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    line-height: 1.2;
+}
+
+.btn-delete-card:hover {
+    background: rgba(244, 63, 94, 0.25) !important;
+    border-color: #f43f5e !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(244, 63, 94, 0.2);
+}
+
 .footer {
     text-align: center;
     padding: 2.5rem 1rem;

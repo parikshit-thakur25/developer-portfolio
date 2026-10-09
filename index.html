@@ -354,7 +354,10 @@
                     <p>Verified student developer certification with enterprise developer tooling & Copilot access.</p>
                     <div class="cert-card-footer">
                         <span class="cert-date">Issued: Oct 2026 • Verified ✅</span>
-                        <a href="https://education.github.com" target="_blank" class="btn-white-sm">View Credential ↗</a>
+                        <div class="cert-actions-flex">
+                            <a href="https://education.github.com" target="_blank" class="btn-white-sm">View Credential ↗</a>
+                            <button class="btn-delete-card owner-only hidden" onclick="if(confirm('Delete this certificate card?')) this.closest('.cert-card').remove();">Delete 🗑️</button>
+                        </div>
                     </div>
                 </div>
             </div>
