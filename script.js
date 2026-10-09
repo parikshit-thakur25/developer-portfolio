@@ -81,12 +81,31 @@ document.addEventListener('DOMContentLoaded', () => {
         if (lockNowBtn) {
             lockNowBtn.addEventListener('click', lockOwnerMode);
         }
+
+        const changePinBtn = document.getElementById('changePinBtn');
+        if (changePinBtn) {
+            changePinBtn.addEventListener('click', () => {
+                const currentPin = localStorage.getItem('parikshit_admin_pin') || '1234';
+                const inputOld = prompt('Enter your current Admin Password / PIN:');
+                if (inputOld === currentPin) {
+                    const newPin = prompt('Enter your NEW Admin Password / PIN (at least 4 characters):');
+                    if (newPin && newPin.trim().length >= 4) {
+                        localStorage.setItem('parikshit_admin_pin', newPin.trim());
+                        alert('🔑 Success! Your Admin Password has been updated successfully.');
+                    } else if (newPin !== null) {
+                        alert('Invalid password! Password must be at least 4 characters.');
+                    }
+                } else if (inputOld !== null) {
+                    alert('❌ Incorrect current Admin password!');
+                }
+            });
+        }
     }
 
     function handlePinVerification() {
         const pin = ownerPinInput.value.trim();
-        // Default PIN: 1234
-        if (pin === '1234') {
+        const activePin = localStorage.getItem('parikshit_admin_pin') || '1234';
+        if (pin === activePin) {
             unlockOwnerMode();
             pinModal.classList.add('hidden');
             ownerPinInput.value = '';
