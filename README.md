@@ -1,122 +1,83 @@
-# ⚡ Parikshit Thakur — Developer Portfolio & Cyber Terminal Platform
+# ⚡ Parikshit Thakur — Personal Developer Portfolio & Cyber Terminal
 
 [![Live Portfolio](https://img.shields.io/badge/Live_Domain-parikshit07.tech-06b6d4?style=for-the-badge&logo=google-chrome&logoColor=white)](https://www.parikshit07.tech)
 [![GitHub Repository](https://img.shields.io/badge/GitHub_Repo-developer--portfolio-8b5cf6?style=for-the-badge&logo=github&logoColor=white)](https://github.com/parikshit-thakur25/developer-portfolio)
 [![License](https://img.shields.io/badge/License-MIT-10b981?style=for-the-badge)](LICENSE)
 
-A production-grade, ultra-aesthetic **Full-Stack Developer Portfolio & Cyber Terminal Platform** engineered for **Parikshit Thakur** (Full-Stack MERN Developer & Machine Learning Engineer). Featuring modern dark-mode ambiance, handwriting splash preloader, interactive CLI terminal, Owner Admin Mode security lock, PDF resume manager, and dynamic credential verification.
+Welcome to the source repository of my personal developer portfolio and interactive terminal! Built completely from scratch using vanilla HTML5, CSS3, and JavaScript — no heavy frameworks or external dependencies required.
 
 ---
 
-## 🛠️ Comprehensive Tech Stack & Architectural Use Description
+## 🔥 Features & Key Highlights
 
-### 1. 💻 Frontend Architecture & UI Logic
-- **HTML5 (Semantic Web Structure)**:
-  - Organizes content using semantic elements (`<header>`, `<nav>`, `<section>`, `<article>`, `<footer>`).
-  - Implements accessible form input attributes, ARIA roles, and responsive metadata for fast rendering and search indexing.
-- **Vanilla CSS3 & Custom Design System (`style.css`)**:
-  - **CSS Custom Properties (Variables)**: Standardizes colors (`--bg-dark: #050711`, `--accent-cyan: #06b6d4`, `--accent-violet: #8b5cf6`, `--accent-crimson: #f43f5e`), font families, and container dimensions.
-  - **Glassmorphic UI Engine**: Combines semi-transparent background fills (`rgba(14, 18, 36, 0.72)`), subtle borders (`rgba(255, 255, 255, 0.09)`), and backdrop filters (`backdrop-filter: blur(12px)`) for a 3D glass aesthetic.
-  - **Ambient Lighting Mesh**: Uses fixed blur elements (`.ambient-orb`) with radial color gradients and subtle CSS Keyframe animation pulses (`@keyframes splashPulse`).
-- **ES6+ Vanilla JavaScript (`script.js`)**:
-  - **DOM Manipulation & Event Listeners**: Powers interactive modals, smooth scrolling (`scrollIntoView`), and live component toggles without third-party framework overhead.
-  - **Web Storage API (`localStorage`)**: Persists custom settings across browser sessions, including custom LinkedIn profile URLs, uploaded resume PDF metadata, and the customized Owner Admin PIN.
+- **✍️ Cursive Handwriting Intro Splash**: A smooth handwriting preloader (`"hello ,"` ➔ `"parikshit"`) built with custom typing logic and a quick `SKIP ↵` option.
+- **💻 Interactive Cyber Terminal (`parikshit@tech-lab:~`)**: A built-in CLI simulator supporting commands like `whoami`, `skills`, `projects`, `contact`, `status`, `domain`, `help`, and `clear`.
+- **🔐 Owner Admin Mode & Security**: PIN-protected control panel (`1234` default) allowing me to manage resume uploads and certificates directly on the live page, complete with a `🔑 Change Admin Password` feature.
+- **📄 PDF Resume Upload & Viewer**: Upload, store, view, or replace resume PDFs locally using the HTML5 `FileReader` API without needing any external server database.
+- **🧠 Featured Machine Learning & Web Projects**: Includes real project cards like **CardioVision AI** (Heart Disease Risk Predictor built with Python, Scikit-Learn, and Flask) with clean white action buttons and direct GitHub repo links.
+- **🌐 Custom Domain Setup**: Hosted on GitHub Pages with custom domain routing ([parikshit07.tech](https://www.parikshit07.tech)) and automated SSL/TLS encryption.
 
 ---
 
-### 2. ✍️ Full-Screen Intro Splash Preloader Engine
-- **Handwriting Calligraphy Typography (`Google Font Caveat`)**:
-  - Delivers a fluid handwriting animation sequence (`"hello ,"` ➔ `"parikshit"`).
-- **Asynchronous Typing & Deleting Controller**:
-  - Built using recursive `setTimeout` timers to simulate real human typing speeds (75ms/char) and rapid deletion (40ms/char).
-- **Curtain Exit & Keyboard Override**:
-  - Smooth slide-up exit transition (`transform: translateY(-100%)`) with cubic-bezier timing (`cubic-bezier(0.77, 0, 0.175, 1)`).
-  - Listens for keyboard triggers (`Enter`, `Escape`, `Space`) or clicks on the `SKIP ↵` button to skip the intro instantly.
+## 🛠️ Tech Stack & How It Works
+
+| Module | Tech Used | Description |
+| :--- | :--- | :--- |
+| **Structure & Layout** | HTML5 | Clean, semantic structure with accessible tags and responsive meta setup. |
+| **Styling & Theme** | CSS3 (Vanilla) | Ambient glow mesh, dark mode glassmorphism, responsive grid layouts, smooth CSS keyframes. |
+| **Client Scripting** | JavaScript (ES6+) | Handles terminal emulation, typing animations, modal state, and `localStorage` persistence. |
+| **Resume & Data Storage** | HTML5 `FileReader` + `localStorage` | Client-side file uploading and instant PDF rendering without backend dependencies. |
+| **Hosting & SSL** | GitHub Pages + `get.tech` | Custom domain configuration (`parikshit07.tech`) secured with Let's Encrypt HTTPS. |
 
 ---
 
-### 3. 💻 Cyber Terminal Widget (`parikshit@tech-lab:~`)
-- **CLI Emulator Engine**:
-  - Intercepts user keyboard inputs (`keydown` on `#terminalInput`).
-  - Supports command evaluation: `whoami`, `skills`, `projects`, `contact`, `status`, `domain`, `help`, and `clear`.
-  - Appends styled terminal response lines (`term-response cyan/green`) dynamically and auto-scrolls terminal output.
-
----
-
-### 4. 🔐 Owner Admin Mode & Security System
-- **PIN Authentication (`1234` default)**:
-  - Secures administrative features behind client-side PIN validation.
-  - Toggles `.owner-only` UI elements (`Upload PDF 📤`, `Upload Certificate ➕`, `Edit ✏️ LinkedIn`, `Delete 🗑️`) dynamically.
-- **Dynamic Admin Password Modification (`🔑 Change Admin Password`)**:
-  - Allows the site owner to update the admin PIN anytime. The new password is saved directly in `localStorage` (`parikshit_admin_pin`).
-
----
-
-### 5. 📄 Dynamic PDF Resume Uploader & Reader
-- **HTML5 `FileReader` API Integration**:
-  - Converts uploaded PDF files into Data URLs (`readAsDataURL`) for instantaneous local viewing without requiring server backends.
-- **State Controller & Local Storage**:
-  - Stores resume filename (`parikshit_resume_name`) and Data URL payload (`parikshit_resume_data`).
-  - Toggles clean placeholder (`"No Resume PDF Uploaded Yet"`) and active resume state (`View PDF ↗` / `Delete 🗑️`).
-
----
-
-### 6. 🌐 Hosting, Cloud & Security Infrastructure
-- **GitHub Pages**:
-  - Serves static assets from the `main` branch.
-- **Custom Domain Routing (`parikshit07.tech`)**:
-  - Custom domain claimed via GitHub Student Developer Pack on `get.tech`.
-  - Linked using CNAME and 4 GitHub Anycast A records (`185.199.108.153`, `.109.`, `.110.`, `.111.`).
-- **Automated SSL/TLS Encryption (Let's Encrypt)**:
-  - Secures all HTTP traffic with automated HTTPS encryption.
-
----
-
-## 📂 Directory Structure
+## 📁 Repository Structure
 
 ```text
 developer-portfolio/
 ├── CNAME               # Custom domain configuration (parikshit07.tech)
-├── LICENSE             # MIT License file
-├── README.md           # Comprehensive project documentation
-├── index.html          # Primary semantic HTML5 structure & layout
-├── style.css           # Core CSS design system, ambient lighting, glassmorphism
-├── script.js           # Interactive splash animation, cyber terminal, admin PIN lock
+├── LICENSE             # MIT License open-source permission file
+├── README.md           # Developer documentation & project breakdown
+├── index.html          # Main HTML structure & portfolio contents
+├── style.css           # Custom CSS design system, dark glassmorphism, animations
+├── script.js           # Preloader script, terminal logic, admin PIN & uploader
 └── scripts/
-    └── setup.sh        # Automated local server launch & environment verification script
+    └── setup.sh        # Quick bash setup script for local testing
 ```
 
 ---
 
-## 🚀 Quick Start & Local Setup
+## 🚀 Quick Start & Running Locally
 
-### Option 1: Using the Automated Setup Script
+### Method 1: Using the Automated Setup Script
 ```bash
-# Clone the repository
+# Clone this repository
 git clone https://github.com/parikshit-thakur25/developer-portfolio.git
 cd developer-portfolio
 
-# Run the automated setup script
+# Make the setup script executable and run it
+chmod +x scripts/setup.sh
 ./scripts/setup.sh
 ```
 
-### Option 2: Manual Python HTTP Server
+### Method 2: Python Local Server
 ```bash
+# Launch a local development server on port 8000
 python3 -m http.server 8000
 ```
-Open your browser and visit `http://localhost:8000`.
+Then open your browser and navigate to `http://localhost:8000`.
 
 ---
 
-## 👤 Author & Contact
+## 👤 Author & Connect
 
 **Parikshit Thakur**  
-- **Email**: `work.parikshit07@gmail.com`  
-- **Domain**: [parikshit07.tech](https://www.parikshit07.tech)  
+- **Website**: [parikshit07.tech](https://www.parikshit07.tech)  
+- **Email**: [work.parikshit07@gmail.com](mailto:work.parikshit07@gmail.com)  
 - **GitHub**: [@parikshit-thakur25](https://github.com/parikshit-thakur25)  
 - **LinkedIn**: [parikshit-thakur-1a098a2a3](https://www.linkedin.com/in/parikshit-thakur-1a098a2a3)  
 
 ---
 
-## 📄 License
-This project is open-source under the [MIT License](LICENSE).
+## 📜 License
+Handcrafted & Designed with ❤️ by **Parikshit Thakur**. Distributed under the [MIT License](LICENSE).
