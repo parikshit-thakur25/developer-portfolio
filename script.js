@@ -145,8 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!textElement) return;
 
         const phrases = [
-            "Hello & Welcome! I'm Parikshit Thakur — Machine Learning & Software Engineer.",
-            "Namaste! 🙏 Building Intelligent ML Models, REST APIs & Full-Stack Apps.",
+            "Hello & Welcome! I'm Parikshit Thakur — Full-Stack Developer & ML Engineer.",
+            "Namaste! 🙏 Building Full-Stack MERN Apps, TailwindCSS Interfaces, REST APIs & Scikit-Learn ML.",
             "Explore my CardioVision AI project & verified credentials below!"
         ];
 
@@ -276,13 +276,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         appendTerminalLine('> Commands: whoami, projects, skills, contact, status, domain, clear', 'term-response cyan');
                         break;
                     case 'whoami':
-                        appendTerminalLine('> Parikshit Thakur — Machine Learning & Software Engineer', 'term-response cyan');
+                        appendTerminalLine('> Parikshit Thakur — Full-Stack (MERN) Developer & Machine Learning Engineer', 'term-response cyan');
                         break;
                     case 'projects':
                         appendTerminalLine('> 🚀 CardioVision AI — Clinical Heart Disease Risk Engine (Render Deployed)', 'term-response green');
                         break;
                     case 'skills':
-                        appendTerminalLine('> ML: Scikit-Learn, SVM, Random Forest | Web: Flask, REST APIs, HTML5/CSS3/JS', 'term-response');
+                        appendTerminalLine('> Full-Stack: MERN Stack (MongoDB, Express, React, Node.js), TailwindCSS | ML & Backend: Scikit-Learn, REST APIs, Python 3', 'term-response');
                         break;
                     case 'contact':
                         appendTerminalLine('> ✉️ work.parikshit07@gmail.com | 🌐 parikshit07.tech | 🐙 github.com/parikshit-thakur25', 'term-response green');
