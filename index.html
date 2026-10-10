@@ -66,10 +66,10 @@
             <div class="modal-body">
                 <p>Enter Admin Password to manage resume PDF.</p>
                 <div class="pin-input-group">
-                    <input type="password" id="ownerPinInput" maxlength="12" placeholder="Password (Default: 1234)">
+                    <input type="password" id="ownerPinInput" maxlength="32" placeholder="Enter Admin Password">
                     <button id="verifyPinBtn" class="btn-primary-glow">Unlock</button>
                 </div>
-                <p id="pinError" class="error-msg hidden">Incorrect password. Default: 1234</p>
+                <p id="pinError" class="error-msg hidden">Incorrect password.</p>
             </div>
         </div>
     </div>
@@ -82,10 +82,10 @@
                 <button id="closeChangePasswordModal" class="btn-close">&times;</button>
             </div>
             <div class="modal-body">
-                <p>Update your custom Owner Admin Password (Default: 1234).</p>
+                <p>Update your custom Owner Admin Password.</p>
                 <div class="pin-input-group" style="flex-direction: column;">
-                    <input type="password" id="currentPassInput" placeholder="Current Password (Default: 1234)">
-                    <input type="password" id="newPassInput" placeholder="New Custom Password (min 4 chars)">
+                    <input type="password" id="currentPassInput" placeholder="Current Admin Password">
+                    <input type="password" id="newPassInput" placeholder="New Password (min 4 chars)">
                     <button id="saveNewPassBtn" class="btn-primary-glow" style="width: 100%;">Save New Password</button>
                 </div>
                 <p id="passChangeStatus" class="error-msg hidden"></p>

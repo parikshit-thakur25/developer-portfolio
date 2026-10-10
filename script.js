@@ -27,7 +27,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const terminalInput = document.getElementById('terminalInput');
     const terminalOutput = document.getElementById('terminalOutput');
 
-    let isOwnerUnlocked = false;
+    // SHA-256 Cryptographic Hash Helper
+    async function hashString(str) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(str);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    // Global Master SHA-256 Hash for 'parikshit07'
+    const MASTER_PIN_HASH = 'ac1f2bfaf09729c2e43a9f3ee778ee6c17c7d68c9723b7811f53f12163010638';
 
     // Owner Lock / Unlock Logic
     if (ownerLockBtn && pinModal) {
@@ -75,12 +85,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 changePasswordModal.classList.add('hidden');
             });
 
-            saveNewPassBtn.addEventListener('click', () => {
-                const currentPin = localStorage.getItem('parikshit_admin_pin') || '1234';
+            saveNewPassBtn.addEventListener('click', async () => {
+                const storedHash = localStorage.getItem('parikshit_admin_pin_hash') || MASTER_PIN_HASH;
                 const enteredOld = currentPassInput.value.trim();
                 const enteredNew = newPassInput.value.trim();
 
-                if (enteredOld !== currentPin) {
+                const oldHash = await hashString(enteredOld);
+
+                if (oldHash !== storedHash) {
                     passChangeStatus.textContent = '❌ Incorrect current Admin password!';
                     passChangeStatus.classList.remove('hidden');
                     return;
@@ -92,18 +104,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-                localStorage.setItem('parikshit_admin_pin', enteredNew);
+                const newHash = await hashString(enteredNew);
+                localStorage.setItem('parikshit_admin_pin_hash', newHash);
                 alert('🔑 Success! Your Admin Password has been updated successfully.');
                 changePasswordModal.classList.add('hidden');
             });
         }
     }
 
-    function handlePinVerification() {
+    async function handlePinVerification() {
         const enteredPin = ownerPinInput.value.trim();
-        const storedPin = localStorage.getItem('parikshit_admin_pin') || '1234';
+        if (!enteredPin) return;
+
+        const enteredHash = await hashString(enteredPin);
+        const storedHash = localStorage.getItem('parikshit_admin_pin_hash') || MASTER_PIN_HASH;
         
-        if (enteredPin === storedPin) {
+        if (enteredHash === storedHash) {
             unlockOwnerMode();
             pinModal.classList.add('hidden');
             ownerPinInput.value = '';
