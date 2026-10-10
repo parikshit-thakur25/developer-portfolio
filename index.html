@@ -64,12 +64,31 @@
                 <button id="closePinModal" class="btn-close">&times;</button>
             </div>
             <div class="modal-body">
-                <p>Enter 4-digit Admin Password to manage resume PDF.</p>
+                <p>Enter Admin Password to manage resume PDF.</p>
                 <div class="pin-input-group">
                     <input type="password" id="ownerPinInput" maxlength="12" placeholder="Password (Default: 1234)">
                     <button id="verifyPinBtn" class="btn-primary-glow">Unlock</button>
                 </div>
                 <p id="pinError" class="error-msg hidden">Incorrect password. Default: 1234</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Change Admin Password Modal -->
+    <div id="changePasswordModal" class="modal-backdrop hidden">
+        <div class="modal-glass-card pin-modal-card">
+            <div class="modal-header">
+                <h3>🔑 Change Admin Password</h3>
+                <button id="closeChangePasswordModal" class="btn-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Update your custom Owner Admin Password (Default: 1234).</p>
+                <div class="pin-input-group" style="flex-direction: column;">
+                    <input type="password" id="currentPassInput" placeholder="Current Password (Default: 1234)">
+                    <input type="password" id="newPassInput" placeholder="New Custom Password (min 4 chars)">
+                    <button id="saveNewPassBtn" class="btn-primary-glow" style="width: 100%;">Save New Password</button>
+                </div>
+                <p id="passChangeStatus" class="error-msg hidden"></p>
             </div>
         </div>
     </div>

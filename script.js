@@ -55,21 +55,46 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const changePinBtn = document.getElementById('changePinBtn');
-        if (changePinBtn) {
+        const changePasswordModal = document.getElementById('changePasswordModal');
+        const closeChangePasswordModal = document.getElementById('closeChangePasswordModal');
+        const currentPassInput = document.getElementById('currentPassInput');
+        const newPassInput = document.getElementById('newPassInput');
+        const saveNewPassBtn = document.getElementById('saveNewPassBtn');
+        const passChangeStatus = document.getElementById('passChangeStatus');
+
+        if (changePinBtn && changePasswordModal) {
             changePinBtn.addEventListener('click', () => {
+                changePasswordModal.classList.remove('hidden');
+                currentPassInput.value = '';
+                newPassInput.value = '';
+                passChangeStatus.classList.add('hidden');
+                currentPassInput.focus();
+            });
+
+            closeChangePasswordModal.addEventListener('click', () => {
+                changePasswordModal.classList.add('hidden');
+            });
+
+            saveNewPassBtn.addEventListener('click', () => {
                 const currentPin = localStorage.getItem('parikshit_admin_pin') || '1234';
-                const inputOld = prompt('Enter your current Admin Password / PIN:');
-                if (inputOld === currentPin) {
-                    const newPin = prompt('Enter your NEW Admin Password / PIN (at least 4 characters):');
-                    if (newPin && newPin.trim().length >= 4) {
-                        localStorage.setItem('parikshit_admin_pin', newPin.trim());
-                        alert('🔑 Success! Your Admin Password has been updated successfully.');
-                    } else if (newPin !== null) {
-                        alert('Invalid password! Password must be at least 4 characters.');
-                    }
-                } else if (inputOld !== null) {
-                    alert('❌ Incorrect current Admin password!');
+                const enteredOld = currentPassInput.value.trim();
+                const enteredNew = newPassInput.value.trim();
+
+                if (enteredOld !== currentPin) {
+                    passChangeStatus.textContent = '❌ Incorrect current Admin password!';
+                    passChangeStatus.classList.remove('hidden');
+                    return;
                 }
+
+                if (enteredNew.length < 4) {
+                    passChangeStatus.textContent = '⚠️ New password must be at least 4 characters!';
+                    passChangeStatus.classList.remove('hidden');
+                    return;
+                }
+
+                localStorage.setItem('parikshit_admin_pin', enteredNew);
+                alert('🔑 Success! Your Admin Password has been updated successfully.');
+                changePasswordModal.classList.add('hidden');
             });
         }
     }
