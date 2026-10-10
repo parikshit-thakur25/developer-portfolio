@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parikshit Thakur — Developer Portfolio & Tech Lab</title>
-    <meta name="description" content="Personal developer portfolio of Parikshit Thakur. Exploring Full-Stack MERN Web Development and Machine Learning with Python & Scikit-Learn.">
+    <title>Parikshit Thakur — Developer Portfolio</title>
+    <meta name="description" content="Minimal developer portfolio of Parikshit Thakur.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fira+Code:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fira+Code:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Full-Screen Intro Splash Preloader Overlay -->
+    <!-- Handwriting Intro Splash -->
     <div id="introSplash" class="intro-splash-overlay">
         <div class="splash-ambient-glow"></div>
         <div class="splash-content">
@@ -22,30 +22,14 @@
                 <span id="splashText" class="splash-handwriting-text"></span>
                 <span class="splash-cursor">|</span>
             </div>
-            <p class="splash-subtitle" id="splashSubtitle">// Exploring Full-Stack Web Dev & Machine Learning</p>
+            <p class="splash-subtitle" id="splashSubtitle">// Parikshit Thakur</p>
         </div>
-        <button id="skipSplashBtn" class="splash-skip-btn">
-            <span>SKIP</span>
-            <span class="key-hint">↵</span>
-        </button>
+        <button id="skipSplashBtn" class="splash-skip-btn">SKIP ↵</button>
     </div>
 
-    <!-- Ambient Purple & Cyan Glow Mesh Orbs -->
+    <!-- Ambient Purple Glow Orbs -->
     <div class="ambient-orb orb-1"></div>
     <div class="ambient-orb orb-2"></div>
-    <div class="ambient-orb orb-3"></div>
-    <div class="grid-overlay"></div>
-
-    <!-- Top Typewriter Greeting Banner -->
-    <div class="live-hello-banner">
-        <div class="hello-container">
-            <span class="live-indicator">✨ WELCOME</span>
-            <div class="typewriter-wrapper">
-                <span id="typewriterText"></span><span class="typewriter-cursor">|</span>
-            </div>
-            <a href="#contact" class="hello-link">Get In Touch →</a>
-        </div>
-    </div>
 
     <!-- Navigation Header -->
     <nav class="navbar">
@@ -56,17 +40,15 @@
 
             <div class="nav-links">
                 <a href="#about">About</a>
-                <a href="#contact">Contact</a>
                 <a href="#projects">Projects</a>
                 <a href="#resume">Resume</a>
-                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
             </div>
 
             <div class="nav-actions">
-                <!-- Owner Admin Secret Lock Button -->
-                <button id="ownerLockBtn" class="btn-owner-lock" title="Owner Admin Access">
+                <button id="ownerLockBtn" class="btn-owner-lock" title="Owner Admin Mode">
                     <span id="lockIcon">🔒</span>
-                    <span id="lockStateText">Visitor Mode</span>
+                    <span id="lockStateText">Visitor</span>
                 </button>
             </div>
         </div>
@@ -76,292 +58,146 @@
     <div id="pinModal" class="modal-backdrop hidden">
         <div class="modal-glass-card pin-modal-card">
             <div class="modal-header">
-                <h3>🔐 Owner Admin Authentication</h3>
+                <h3>🔐 Owner Admin Mode</h3>
                 <button id="closePinModal" class="btn-close">&times;</button>
             </div>
             <div class="modal-body">
-                <p>Enter your 4-digit Owner Password to unlock project management, PDF uploading, and admin controls.</p>
+                <p>Enter 4-digit Admin Password to manage resume PDF.</p>
                 <div class="pin-input-group">
-                    <input type="password" id="ownerPinInput" maxlength="12" placeholder="Enter Admin Password (Default: 1234)">
-                    <button id="verifyPinBtn" class="btn-primary-glow">Unlock Admin</button>
+                    <input type="password" id="ownerPinInput" maxlength="12" placeholder="Password (Default: 1234)">
+                    <button id="verifyPinBtn" class="btn-primary-glow">Unlock</button>
                 </div>
-                <p id="pinError" class="error-msg hidden">Incorrect Admin Password. Try default: 1234</p>
+                <p id="pinError" class="error-msg hidden">Incorrect password. Default: 1234</p>
             </div>
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <header id="about" class="hero-section">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="pulse-dot"></span>
-                    <span>Exploring Full-Stack Web Dev & Machine Learning</span>
+    <!-- Main Wrapper -->
+    <main class="main-wrapper">
+        
+        <!-- Hero Section -->
+        <section id="about" class="minimal-hero">
+            <div class="hero-badge">
+                <span class="pulse-dot"></span>
+                <span>Full-Stack & Machine Learning Learner</span>
+            </div>
+            
+            <h1 class="hero-title">Parikshit Thakur</h1>
+            
+            <p class="hero-tagline">
+                Building web applications with <strong>MERN Stack</strong> & exploring <strong>Machine Learning</strong> with Python.
+            </p>
+
+            <!-- Admin Banner -->
+            <div id="ownerAdminBanner" class="owner-admin-banner hidden">
+                <span class="unlocked-tag">🔓 Owner Admin Mode Unlocked</span>
+                <div class="admin-action-row">
+                    <button id="changePinBtn" class="btn-white-sm">🔑 Change Password</button>
+                    <button id="lockNowBtn" class="btn-admin-action danger">Lock</button>
                 </div>
+            </div>
+        </section>
 
-                <h1 class="hero-title">
-                    Building <span class="gradient-text">Full-Stack Web Tools</span> & Learning Machine Learning.
-                </h1>
+        <!-- What I'm Doing Section -->
+        <section class="concise-section">
+            <h2 class="section-title">// What I'm Doing</h2>
+            <div class="chips-container">
+                <span class="tech-chip">⚡ MERN Stack Development</span>
+                <span class="tech-chip">🤖 Machine Learning with Python</span>
+                <span class="tech-chip">🫀 CardioVision AI Predictor</span>
+                <span class="tech-chip">🎨 Clean UI & Glassmorphism</span>
+            </div>
+        </section>
 
-                <p class="hero-description">
-                    Hi, I'm <strong>Parikshit Thakur</strong>. I'm a passionate developer currently in an active learning & building phase. I love experimenting with the <strong>MERN Stack (MongoDB, Express, React, Node.js)</strong>, crafting clean user interfaces, and exploring <strong>Machine Learning algorithms with Python & Scikit-Learn</strong>.
+        <!-- Projects Section -->
+        <section id="projects" class="concise-section">
+            <h2 class="section-title">// Projects</h2>
+            <div class="project-minimal-card">
+                <div class="project-card-header">
+                    <h3>🫀 CardioVision AI</h3>
+                    <span class="live-pill">Live Application</span>
+                </div>
+                <p class="project-short-desc">
+                    Clinical Heart Disease Risk Assessment Tool built with Python, Scikit-Learn (94.2% accuracy), and Flask.
                 </p>
-
-                <div class="hero-cta-group">
-                    <a href="#projects" class="btn-primary-glow">
-                        <span>Explore Projects</span>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
-                    <a href="https://github.com/parikshit-thakur25" target="_blank" class="btn-icon-glass" title="GitHub Profile">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                    </a>
-                </div>
-
-                <!-- Owner Admin Controls Banner (Visible only when unlocked by PIN) -->
-                <div id="ownerAdminBanner" class="owner-admin-banner hidden">
-                    <div class="admin-banner-header">
-                        <span class="unlocked-tag">🔓 Owner Admin Mode Unlocked</span>
-                        <p>You have owner administrative privileges to upload/delete resumes and change password.</p>
-                    </div>
-                    <div class="admin-action-row">
-                        <button id="changePinBtn" class="btn-white-sm">🔑 Change Admin Password</button>
-                        <button id="lockNowBtn" class="btn-admin-action danger">Lock Admin Mode</button>
-                    </div>
+                <div class="project-actions">
+                    <a href="https://github.com/parikshit-thakur25/developer-portfolio" target="_blank" class="btn-white-sm">View Project ↗</a>
+                    <a href="https://github.com/parikshit-thakur25/developer-portfolio" target="_blank" class="btn-white-sm outline">GitHub 🐙</a>
                 </div>
             </div>
+        </section>
 
-            <!-- Cyber Terminal Interactive Widget -->
-            <div class="hero-terminal-card">
-                <div class="terminal-header-bar">
-                    <div class="terminal-dots">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
-                    </div>
-                    <span class="terminal-title">parikshit@tech-lab:~</span>
-                </div>
-                <div class="terminal-body" id="terminalOutput">
-                    <p class="term-line"><span class="term-prompt">parikshit@local:~$</span> whoami</p>
-                    <p class="term-response cyan">&gt; Parikshit Thakur — Full-Stack & ML Learner</p>
-                    <p class="term-line"><span class="term-prompt">parikshit@local:~$</span> status</p>
-                    <p class="term-response green">&gt; Status: 🟢 Actively Building Projects & Learning New Technologies</p>
-                    <p class="term-line hint-text">&gt; Type <span class="term-cmd">'help'</span>, <span class="term-cmd">'projects'</span>, <span class="term-cmd">'skills'</span>, or <span class="term-cmd">'clear'</span> below:</p>
-                </div>
-                <div class="terminal-input-row">
-                    <span class="term-prompt">parikshit@local:~$</span>
-                    <input type="text" id="terminalInput" placeholder="Try typing 'help'..." autocomplete="off">
-                </div>
+        <!-- Resume Section -->
+        <section id="resume" class="concise-section">
+            <div class="section-title-flex">
+                <h2 class="section-title">// Resume</h2>
+                <label for="resumeFileInput" class="btn-white-sm upload-btn-label owner-only hidden">
+                    <span>Upload PDF 📤</span>
+                    <input type="file" id="resumeFileInput" accept=".pdf" class="hidden-file-input">
+                </label>
             </div>
-        </div>
-    </header>
-
-    <!-- SECTION 1: Contact Info Cards -->
-    <section id="contact" class="section-container">
-        <div class="section-header">
-            <span class="sub-heading">// CONNECT</span>
-            <h2>Contact & Socials</h2>
-            <p>Feel free to send me an email or connect with me on social platforms.</p>
-        </div>
-
-        <div class="contact-cards-grid">
-            <!-- Email Card -->
-            <div class="contact-card-glass email-card">
-                <div class="card-icon-header">
-                    <div class="card-icon-circle email-glow">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    </div>
-                    <span class="card-badge">Direct Mail</span>
-                </div>
-                <h3>Primary Email</h3>
-                <p class="card-text-val">work.parikshit07@gmail.com</p>
-                <div class="card-action-row">
-                    <a href="mailto:work.parikshit07@gmail.com" class="btn-white-sm">Send Email ↗</a>
-                    <button class="btn-white-sm outline" id="copyEmailBtn" data-email="work.parikshit07@gmail.com">Copy 📋</button>
-                </div>
-            </div>
-
-            <!-- LinkedIn Card -->
-            <div class="contact-card-glass linkedin-card">
-                <div class="card-icon-header">
-                    <div class="card-icon-circle linkedin-glow">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.74a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z"/></svg>
-                    </div>
-                    <span class="card-badge">LinkedIn</span>
-                </div>
-                <h3>LinkedIn Profile</h3>
-                <p class="card-text-val" id="linkedinDisplay">linkedin.com/in/parikshit-thakur-1a098a2a3</p>
-                <div class="card-action-row">
-                    <a href="https://www.linkedin.com/in/parikshit-thakur-1a098a2a3" id="linkedinBtn" target="_blank" class="btn-white-sm">Open Profile ↗</a>
-                </div>
-            </div>
-
-            <!-- GitHub Card -->
-            <div class="contact-card-glass github-card">
-                <div class="card-icon-header">
-                    <div class="card-icon-circle github-glow">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                    </div>
-                    <span class="card-badge">GitHub</span>
-                </div>
-                <h3>GitHub Account</h3>
-                <p class="card-text-val">@parikshit-thakur25</p>
-                <div class="card-action-row">
-                    <a href="https://github.com/parikshit-thakur25" target="_blank" class="btn-white-sm">View Repos ↗</a>
-                </div>
-            </div>
-
-            <!-- Instagram Card Placeholder -->
-            <div class="contact-card-glass insta-card">
-                <div class="card-icon-header">
-                    <div class="card-icon-circle insta-glow">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                    </div>
-                    <span class="card-badge insta-badge">Social</span>
-                </div>
-                <h3>Instagram</h3>
-                <p class="card-text-val" id="instaDisplay">@parikshit.thakur (Connect Soon)</p>
-                <div class="card-action-row">
-                    <a href="https://instagram.com" id="instaBtn" target="_blank" class="btn-white-sm">Open Instagram ↗</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 2: Featured Work & Projects Showcase -->
-    <section id="projects" class="section-container">
-        <div class="section-header">
-            <span class="sub-heading">// MY PROJECTS</span>
-            <h2>Featured Projects</h2>
-            <p>Real-world projects I've built to apply Machine Learning & Full-Stack Web Development.</p>
-        </div>
-
-        <div class="projects-list-grid">
-            <!-- Project Card: CardioVision AI -->
-            <div class="project-glass-card">
-                <div class="project-header-bar">
-                    <div class="project-tags">
-                        <span class="tag ml">Machine Learning</span>
-                        <span class="tag backend">Python & Flask</span>
-                        <span class="tag ui">Interactive UI</span>
-                    </div>
-                    <span class="visibility-status public">Live Project</span>
+            
+            <div class="resume-minimal-box">
+                <div id="noResumePlaceholder" class="empty-resume">
+                    <span>📄</span>
+                    <p>No Resume PDF Uploaded Yet</p>
                 </div>
 
-                <h3>CardioVision AI — Heart Disease Risk Predictor</h3>
-                <p class="project-desc">
-                    An interactive machine learning application that predicts cardiovascular heart disease risk factors from patient medical metrics. Built with Python, Scikit-Learn (Random Forest & XGBoost), and Flask, featuring a real-time risk gauge.
-                </p>
-
-                <div class="project-highlights">
-                    <div class="highlight-item">
-                        <span class="hl-icon">⚡</span>
-                        <span><strong>ML Classifiers</strong> trained on clinical patient data (94.2% evaluation accuracy).</span>
-                    </div>
-                    <div class="highlight-item">
-                        <span class="hl-icon">🩺</span>
-                        <span><strong>Real-Time Input Evaluation</strong> for blood pressure, cholesterol, max heart rate, and ST depression.</span>
-                    </div>
-                </div>
-
-                <div class="project-links">
-                    <a href="https://github.com/parikshit-thakur25/developer-portfolio" target="_blank" class="btn-white-sm">
-                        <span>View Project ↗</span>
-                    </a>
-                    <a href="https://github.com/parikshit-thakur25/developer-portfolio" target="_blank" class="btn-white-sm outline">
-                        <span>GitHub Repo 🐙</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 3: Resume Section -->
-    <section id="resume" class="section-container">
-        <div class="section-header-flex">
-            <div class="section-header">
-                <span class="sub-heading">// RESUME</span>
-                <h2>My Resume</h2>
-                <p>View or upload my official developer resume PDF document.</p>
-            </div>
-
-            <label for="resumeFileInput" class="btn-white-sm upload-btn-label owner-only hidden">
-                <span>Upload PDF 📤</span>
-                <input type="file" id="resumeFileInput" accept=".pdf" class="hidden-file-input">
-            </label>
-        </div>
-
-        <div class="resume-section-card">
-            <div class="resume-card-body" id="resumeCardBody">
-                <div id="noResumePlaceholder" class="empty-resume-placeholder">
-                    <div class="empty-icon">📄</div>
-                    <h3>No Resume PDF Uploaded Yet</h3>
-                    <p>Unlock Owner Admin Mode (🔒) to upload your custom resume PDF file.</p>
-                </div>
-
-                <div id="activeResumeContainer" class="active-resume-box hidden">
-                    <div class="resume-info-row">
-                        <div class="resume-icon-badge">📑</div>
-                        <div class="resume-file-details">
-                            <span class="cert-issuer">Official Developer Document</span>
-                            <h3 id="activeResumeName">Uploaded Resume PDF</h3>
-                            <span class="cert-date" id="activeResumeDate">Active PDF Document • Verified ✅</span>
+                <div id="activeResumeContainer" class="active-resume hidden">
+                    <div class="resume-left">
+                        <span>📑</span>
+                        <div>
+                            <h4 id="activeResumeName">Resume PDF</h4>
+                            <span class="active-tag">Active PDF Document ✅</span>
                         </div>
                     </div>
-                    <div class="cert-actions-flex">
+                    <div class="resume-right">
                         <a id="viewActiveResumeBtn" href="#" target="_blank" class="btn-white-sm">View PDF ↗</a>
                         <button id="deleteActiveResumeBtn" class="btn-delete-card owner-only hidden">Delete 🗑️</button>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- SECTION 4: Technical Skills & Learning Focus -->
-    <section id="skills" class="section-container">
-        <div class="section-header">
-            <span class="sub-heading">// LEARNING & SKILLS</span>
-            <h2>Tools & Technologies</h2>
-            <p>Technologies I am currently learning, practicing, and building projects with.</p>
-        </div>
+        <!-- Contact Section -->
+        <section id="contact" class="concise-section">
+            <h2 class="section-title">// Contact Links</h2>
+            <div class="contact-links-grid">
+                <a href="mailto:work.parikshit07@gmail.com" class="contact-btn-card">
+                    <span class="icon">✉️</span>
+                    <div class="contact-info">
+                        <span class="label">Email</span>
+                        <span class="val">work.parikshit07@gmail.com</span>
+                    </div>
+                </a>
 
-        <div class="skills-grid">
-            <div class="skill-card">
-                <div class="skill-icon-box ui-icon">💻</div>
-                <h3>Full-Stack & Web Dev</h3>
-                <p>Building clean, responsive frontend UIs and REST APIs while learning the full JavaScript ecosystem.</p>
-                <div class="skill-tags">
-                    <span>MERN Stack</span><span>React</span><span>JavaScript (ES6+)</span><span>HTML5</span><span>CSS3</span><span>TailwindCSS</span>
-                </div>
+                <a href="https://www.linkedin.com/in/parikshit-thakur-1a098a2a3" target="_blank" class="contact-btn-card">
+                    <span class="icon">💼</span>
+                    <div class="contact-info">
+                        <span class="label">LinkedIn</span>
+                        <span class="val">parikshit-thakur</span>
+                    </div>
+                </a>
+
+                <a href="https://github.com/parikshit-thakur25" target="_blank" class="contact-btn-card">
+                    <span class="icon">🐙</span>
+                    <div class="contact-info">
+                        <span class="label">GitHub</span>
+                        <span class="val">@parikshit-thakur25</span>
+                    </div>
+                </a>
+
+                <a href="https://instagram.com" target="_blank" class="contact-btn-card">
+                    <span class="icon">📸</span>
+                    <div class="contact-info">
+                        <span class="label">Instagram</span>
+                        <span class="val">@parikshit.thakur</span>
+                    </div>
+                </a>
             </div>
+        </section>
 
-            <div class="skill-card">
-                <div class="skill-icon-box ml-icon">🤖</div>
-                <h3>Machine Learning & AI</h3>
-                <p>Exploring supervised classification models, feature selection, and evaluating ML algorithm accuracy.</p>
-                <div class="skill-tags">
-                    <span>Python</span><span>Scikit-Learn</span><span>Random Forest</span><span>XGBoost</span><span>Flask</span>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-icon-box data-icon">📊</div>
-                <h3>Data Analysis & Processing</h3>
-                <p>Learning exploratory data analysis (EDA), handling dataset missing values, and data scaling.</p>
-                <div class="skill-tags">
-                    <span>Pandas</span><span>NumPy</span><span>Data Preprocessing</span><span>Feature Scaling</span>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-icon-box backend-icon">⚙️</div>
-                <h3>Developer Tools & Git</h3>
-                <p>Using version control, command line interfaces, and cloud hosting for continuous learning.</p>
-                <div class="skill-tags">
-                    <span>Git</span><span>GitHub</span><span>VS Code</span><span>GitHub Pages</span><span>Linux CLI</span>
-                </div>
-            </div>
-        </div>
-    </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
