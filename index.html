@@ -46,52 +46,8 @@
                 <a href="#resume">Resume</a>
                 <a href="#contact">Contact</a>
             </div>
-
-            <div class="nav-actions">
-                <button id="ownerLockBtn" class="btn-owner-lock" title="Owner Admin Access (Click to Unlock/Lock)">
-                    <span id="lockIcon">🔒</span>
-                    <span id="lockStateText">Admin</span>
-                </button>
-            </div>
         </div>
     </nav>
-
-    <!-- Owner Secret PIN Modal -->
-    <div id="pinModal" class="modal-backdrop hidden">
-        <div class="modal-glass-card pin-modal-card">
-            <div class="modal-header">
-                <h3>🔐 Owner Admin Mode</h3>
-                <button id="closePinModal" class="btn-close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>Enter Admin Password to manage resume PDF.</p>
-                <div class="pin-input-group">
-                    <input type="password" id="ownerPinInput" maxlength="32" placeholder="Enter Admin Password">
-                    <button id="verifyPinBtn" class="btn-primary-glow">Unlock</button>
-                </div>
-                <p id="pinError" class="error-msg hidden">Incorrect password.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Change Admin Password Modal -->
-    <div id="changePasswordModal" class="modal-backdrop hidden">
-        <div class="modal-glass-card pin-modal-card">
-            <div class="modal-header">
-                <h3>🔑 Change Admin Password</h3>
-                <button id="closeChangePasswordModal" class="btn-close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>Update your custom Owner Admin Password.</p>
-                <div class="pin-input-group" style="flex-direction: column;">
-                    <input type="password" id="currentPassInput" placeholder="Current Admin Password">
-                    <input type="password" id="newPassInput" placeholder="New Password (min 4 chars)">
-                    <button id="saveNewPassBtn" class="btn-primary-glow" style="width: 100%;">Save New Password</button>
-                </div>
-                <p id="passChangeStatus" class="error-msg hidden"></p>
-            </div>
-        </div>
-    </div>
 
     <!-- Main Content Container -->
     <main class="main-wrapper">
@@ -228,35 +184,24 @@
         <section id="resume" class="cyber-section">
             <div class="section-header-flex">
                 <h2>Resume</h2>
-                <div class="owner-controls-group owner-only hidden" style="display: flex; gap: 8px; align-items: center;">
-                    <button id="changePinBtn" class="btn-outline-action small">🔑 Change Password</button>
-                    <label for="resumeFileInput" class="btn-white-sm upload-btn-label">
-                        <span>Upload PDF 📤</span>
-                        <input type="file" id="resumeFileInput" accept=".pdf" class="hidden-file-input">
-                    </label>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <a id="viewResumeBtn" href="resume.pdf" target="_blank" class="btn-white-sm">View PDF ↗</a>
+                    <a id="downloadResumeBtn" href="resume.pdf" download="Parikshit_Thakur_Resume.pdf" class="btn-outline-action small">Download 📥</a>
                 </div>
             </div>
 
             <div class="resume-cyber-card">
-                <div id="noResumePlaceholder" class="empty-resume-box">
-                    <span class="doc-icon">📄</span>
-                    <div>
-                        <h4>No Resume PDF Uploaded Yet</h4>
-                        <p>Unlock Owner Admin Mode (🔒) to upload your custom resume PDF file.</p>
-                    </div>
-                </div>
-
-                <div id="activeResumeContainer" class="active-resume-box hidden">
+                <div class="active-resume-box">
                     <div class="resume-left">
                         <span class="doc-icon">📑</span>
                         <div>
-                            <h4 id="activeResumeName">Resume PDF</h4>
-                            <span class="verified-tag">Active PDF Document • Verified ✅</span>
+                            <h4>Parikshit Thakur — Resume</h4>
+                            <span class="verified-tag">Software Engineering & ML Resume • 2026 ✅</span>
                         </div>
                     </div>
                     <div class="resume-right">
-                        <a id="viewActiveResumeBtn" href="#" target="_blank" class="btn-white-sm">View PDF ↗</a>
-                        <button id="deleteActiveResumeBtn" class="btn-delete-card owner-only hidden">Delete 🗑️</button>
+                        <a href="resume.pdf" target="_blank" class="btn-white-sm">View PDF ↗</a>
+                        <a href="resume.pdf" download="Parikshit_Thakur_Resume.pdf" class="btn-outline-action small">Download 📥</a>
                     </div>
                 </div>
             </div>

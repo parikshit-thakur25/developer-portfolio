@@ -1,24 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Full-Screen Intro Splash Screen Preloader
+    // Full-Screen Intro Splash Screen Preloader (Session-based)
     initIntroSplash();
 
     // Typewriter Greeting
     initTypewriterGreeting();
-
-    // Resume Upload & Delete Handler
-    initResumeUpload();
-
-    // PIN Admin Modal Elements
-    const pinModal = document.getElementById('pinModal');
-    const ownerLockBtn = document.getElementById('ownerLockBtn');
-    const closePinModal = document.getElementById('closePinModal');
-    const verifyPinBtn = document.getElementById('verifyPinBtn');
-    const ownerPinInput = document.getElementById('ownerPinInput');
-    const pinError = document.getElementById('pinError');
-    const lockIcon = document.getElementById('lockIcon');
-    const lockStateText = document.getElementById('lockStateText');
-    const ownerAdminBanner = document.getElementById('ownerAdminBanner');
-    const lockNowBtn = document.getElementById('lockNowBtn');
 
     // Copy Email Button
     const copyEmailBtn = document.getElementById('copyEmailBtn');
@@ -26,136 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Cyber Terminal Elements
     const terminalInput = document.getElementById('terminalInput');
     const terminalOutput = document.getElementById('terminalOutput');
-
-    // SHA-256 Cryptographic Hash Helper
-    async function hashString(str) {
-        const encoder = new TextEncoder();
-        const data = encoder.encode(str);
-        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-    }
-
-    // Global Master SHA-256 Hash for 'parikshit07'
-    const MASTER_PIN_HASH = 'ac1f2bfaf09729c2e43a9f3ee778ee6c17c7d68c9723b7811f53f12163010638';
-
-    // Owner Lock / Unlock Logic
-    if (ownerLockBtn && pinModal) {
-        ownerLockBtn.addEventListener('click', () => {
-            if (isOwnerUnlocked) {
-                lockOwnerMode();
-            } else {
-                pinModal.classList.remove('hidden');
-                ownerPinInput.focus();
-            }
-        });
-
-        closePinModal.addEventListener('click', () => {
-            pinModal.classList.add('hidden');
-            pinError.classList.add('hidden');
-        });
-
-        verifyPinBtn.addEventListener('click', handlePinVerification);
-        ownerPinInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') handlePinVerification();
-        });
-
-        if (lockNowBtn) {
-            lockNowBtn.addEventListener('click', lockOwnerMode);
-        }
-
-        const changePinBtn = document.getElementById('changePinBtn');
-        const changePasswordModal = document.getElementById('changePasswordModal');
-        const closeChangePasswordModal = document.getElementById('closeChangePasswordModal');
-        const currentPassInput = document.getElementById('currentPassInput');
-        const newPassInput = document.getElementById('newPassInput');
-        const saveNewPassBtn = document.getElementById('saveNewPassBtn');
-        const passChangeStatus = document.getElementById('passChangeStatus');
-
-        if (changePinBtn && changePasswordModal) {
-            changePinBtn.addEventListener('click', () => {
-                changePasswordModal.classList.remove('hidden');
-                currentPassInput.value = '';
-                newPassInput.value = '';
-                passChangeStatus.classList.add('hidden');
-                currentPassInput.focus();
-            });
-
-            closeChangePasswordModal.addEventListener('click', () => {
-                changePasswordModal.classList.add('hidden');
-            });
-
-            saveNewPassBtn.addEventListener('click', async () => {
-                const storedHash = localStorage.getItem('parikshit_admin_pin_hash') || MASTER_PIN_HASH;
-                const enteredOld = currentPassInput.value.trim();
-                const enteredNew = newPassInput.value.trim();
-
-                const oldHash = await hashString(enteredOld);
-
-                if (oldHash !== storedHash) {
-                    passChangeStatus.textContent = '❌ Incorrect current Admin password!';
-                    passChangeStatus.classList.remove('hidden');
-                    return;
-                }
-
-                if (enteredNew.length < 4) {
-                    passChangeStatus.textContent = '⚠️ New password must be at least 4 characters!';
-                    passChangeStatus.classList.remove('hidden');
-                    return;
-                }
-
-                const newHash = await hashString(enteredNew);
-                localStorage.setItem('parikshit_admin_pin_hash', newHash);
-                alert('🔑 Success! Your Admin Password has been updated successfully.');
-                changePasswordModal.classList.add('hidden');
-            });
-        }
-    }
-
-    async function handlePinVerification() {
-        const enteredPin = ownerPinInput.value.trim();
-        if (!enteredPin) return;
-
-        const enteredHash = await hashString(enteredPin);
-        const storedHash = localStorage.getItem('parikshit_admin_pin_hash') || MASTER_PIN_HASH;
-        
-        if (enteredHash === storedHash) {
-            unlockOwnerMode();
-            pinModal.classList.add('hidden');
-            ownerPinInput.value = '';
-            pinError.classList.add('hidden');
-        } else {
-            pinError.classList.remove('hidden');
-            ownerPinInput.value = '';
-            ownerPinInput.focus();
-        }
-    }
-
-    function unlockOwnerMode() {
-        isOwnerUnlocked = true;
-        lockIcon.textContent = '🔓';
-        lockStateText.textContent = 'Admin Mode';
-        ownerLockBtn.style.borderColor = 'var(--accent-red)';
-        ownerLockBtn.style.background = 'rgba(244, 63, 94, 0.25)';
-        
-        // Show owner upload, delete & password change elements cleanly
-        document.querySelectorAll('.owner-only').forEach(el => {
-            el.classList.remove('hidden');
-        });
-    }
-
-    function lockOwnerMode() {
-        isOwnerUnlocked = false;
-        lockIcon.textContent = '🔒';
-        lockStateText.textContent = 'Admin';
-        ownerLockBtn.style.borderColor = 'rgba(244, 63, 94, 0.35)';
-        ownerLockBtn.style.background = 'rgba(244, 63, 94, 0.12)';
-
-        // Hide owner elements
-        document.querySelectorAll('.owner-only').forEach(el => {
-            el.classList.add('hidden');
-        });
-    }
 
     // Copy Email to Clipboard Handler
     if (copyEmailBtn) {
@@ -228,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-/* Cursive Handwriting Intro Splash Screen Sequence */
+/* Cursive Handwriting Intro Splash Screen Sequence (Plays once per session like abhinesh.codes) */
 function initIntroSplash() {
     const splashOverlay = document.getElementById('introSplash');
     const splashText = document.getElementById('splashText');
@@ -236,11 +91,18 @@ function initIntroSplash() {
 
     if (!splashOverlay || !splashText) return;
 
+    // Check if intro has already been seen in this session
+    if (sessionStorage.getItem('parikshit_intro_seen')) {
+        splashOverlay.style.display = 'none';
+        return;
+    }
+
     let hasExited = false;
 
     function exitSplash() {
         if (hasExited) return;
         hasExited = true;
+        sessionStorage.setItem('parikshit_intro_seen', 'true');
         splashOverlay.classList.add('splash-exit-anim');
         setTimeout(() => {
             splashOverlay.style.display = 'none';
@@ -341,68 +203,4 @@ function initTypewriterGreeting() {
     }
 
     typeLoop();
-}
-
-/* Resume PDF Upload & Delete Handler */
-function initResumeUpload() {
-    const resumeFileInput = document.getElementById('resumeFileInput');
-    const noResumePlaceholder = document.getElementById('noResumePlaceholder');
-    const activeResumeContainer = document.getElementById('activeResumeContainer');
-    const activeResumeName = document.getElementById('activeResumeName');
-    const activeResumeDate = document.getElementById('activeResumeDate');
-    const viewActiveResumeBtn = document.getElementById('viewActiveResumeBtn');
-    const deleteActiveResumeBtn = document.getElementById('deleteActiveResumeBtn');
-
-    function renderResumeState() {
-        const storedPdfData = localStorage.getItem('parikshit_resume_data');
-        const storedPdfName = localStorage.getItem('parikshit_resume_name');
-
-        if (storedPdfData && storedPdfName) {
-            if (noResumePlaceholder) noResumePlaceholder.classList.add('hidden');
-            if (activeResumeContainer) activeResumeContainer.classList.remove('hidden');
-
-            if (activeResumeName) activeResumeName.textContent = storedPdfName;
-            if (activeResumeDate) activeResumeDate.textContent = 'Active PDF Document • Verified ✅';
-            if (viewActiveResumeBtn) viewActiveResumeBtn.href = storedPdfData;
-        } else {
-            if (noResumePlaceholder) noResumePlaceholder.classList.remove('hidden');
-            if (activeResumeContainer) activeResumeContainer.classList.add('hidden');
-        }
-    }
-
-    renderResumeState();
-
-    if (resumeFileInput) {
-        resumeFileInput.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (!file) return;
-
-            if (file.type !== 'application/pdf') {
-                alert('Please upload a valid PDF file (.pdf)!');
-                return;
-            }
-
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                const pdfDataUrl = event.target.result;
-                localStorage.setItem('parikshit_resume_data', pdfDataUrl);
-                localStorage.setItem('parikshit_resume_name', file.name);
-
-                alert(`📄 Resume "${file.name}" uploaded successfully!`);
-                renderResumeState();
-            };
-            reader.readAsDataURL(file);
-        });
-    }
-
-    if (deleteActiveResumeBtn) {
-        deleteActiveResumeBtn.addEventListener('click', () => {
-            if (confirm('Are you sure you want to delete your uploaded resume PDF?')) {
-                localStorage.removeItem('parikshit_resume_data');
-                localStorage.removeItem('parikshit_resume_name');
-                renderResumeState();
-                alert('🗑️ Resume deleted successfully.');
-            }
-        });
-    }
 }
