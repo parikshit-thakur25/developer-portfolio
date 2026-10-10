@@ -118,15 +118,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function unlockOwnerMode() {
         isOwnerUnlocked = true;
         lockIcon.textContent = '🔓';
-        lockStateText.textContent = 'Owner Admin Mode';
-        ownerLockBtn.style.borderColor = '#a855f7';
-        ownerLockBtn.style.background = 'rgba(168, 85, 247, 0.25)';
+        lockStateText.textContent = 'Admin Mode';
+        ownerLockBtn.style.borderColor = 'var(--accent-red)';
+        ownerLockBtn.style.background = 'rgba(244, 63, 94, 0.25)';
         
-        if (ownerAdminBanner) {
-            ownerAdminBanner.classList.remove('hidden');
-        }
-
-        // Show owner upload & delete elements
+        // Show owner upload, delete & password change elements cleanly
         document.querySelectorAll('.owner-only').forEach(el => {
             el.classList.remove('hidden');
         });
@@ -135,13 +131,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function lockOwnerMode() {
         isOwnerUnlocked = false;
         lockIcon.textContent = '🔒';
-        lockStateText.textContent = 'Visitor Mode';
-        ownerLockBtn.style.borderColor = 'rgba(168, 85, 247, 0.3)';
-        ownerLockBtn.style.background = 'rgba(168, 85, 247, 0.1)';
-
-        if (ownerAdminBanner) {
-            ownerAdminBanner.classList.add('hidden');
-        }
+        lockStateText.textContent = 'Admin';
+        ownerLockBtn.style.borderColor = 'rgba(244, 63, 94, 0.35)';
+        ownerLockBtn.style.background = 'rgba(244, 63, 94, 0.12)';
 
         // Hide owner elements
         document.querySelectorAll('.owner-only').forEach(el => {

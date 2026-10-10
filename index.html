@@ -48,9 +48,9 @@
             </div>
 
             <div class="nav-actions">
-                <button id="ownerLockBtn" class="btn-owner-lock" title="Owner Admin Mode">
+                <button id="ownerLockBtn" class="btn-owner-lock" title="Owner Admin Access (Click to Unlock/Lock)">
                     <span id="lockIcon">🔒</span>
-                    <span id="lockStateText">Visitor</span>
+                    <span id="lockStateText">Admin</span>
                 </button>
             </div>
         </div>
@@ -147,15 +147,6 @@
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 </a>
             </div>
-
-            <!-- Owner Admin Controls Banner (Visible only when unlocked) -->
-            <div id="ownerAdminBanner" class="owner-admin-banner hidden">
-                <span class="unlocked-tag">🔓 Owner Admin Mode Unlocked</span>
-                <div class="admin-action-row">
-                    <button id="changePinBtn" class="btn-white-sm">🔑 Change Password</button>
-                    <button id="lockNowBtn" class="btn-admin-action danger">Lock Admin Mode</button>
-                </div>
-            </div>
         </section>
 
         <!-- About Section -->
@@ -237,10 +228,13 @@
         <section id="resume" class="cyber-section">
             <div class="section-header-flex">
                 <h2>Resume</h2>
-                <label for="resumeFileInput" class="btn-white-sm upload-btn-label owner-only hidden">
-                    <span>Upload PDF 📤</span>
-                    <input type="file" id="resumeFileInput" accept=".pdf" class="hidden-file-input">
-                </label>
+                <div class="owner-controls-group owner-only hidden" style="display: flex; gap: 8px; align-items: center;">
+                    <button id="changePinBtn" class="btn-outline-action small">🔑 Change Password</button>
+                    <label for="resumeFileInput" class="btn-white-sm upload-btn-label">
+                        <span>Upload PDF 📤</span>
+                        <input type="file" id="resumeFileInput" accept=".pdf" class="hidden-file-input">
+                    </label>
+                </div>
             </div>
 
             <div class="resume-cyber-card">
