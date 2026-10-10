@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parikshit Thakur — Full-Stack & Machine Learning Engineer</title>
-    <meta name="description" content="Official developer portfolio of Parikshit Thakur. Full-Stack Developer (MERN, TailwindCSS, Flask) and Machine Learning Engineer.">
+    <title>Parikshit Thakur — Developer Portfolio & Tech Lab</title>
+    <meta name="description" content="Personal developer portfolio of Parikshit Thakur. Exploring Full-Stack MERN Web Development and Machine Learning with Python & Scikit-Learn.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,7 @@
                 <span id="splashText" class="splash-handwriting-text"></span>
                 <span class="splash-cursor">|</span>
             </div>
-            <p class="splash-subtitle" id="splashSubtitle">// Full-Stack & Machine Learning Engineer</p>
+            <p class="splash-subtitle" id="splashSubtitle">// Exploring Full-Stack Web Dev & Machine Learning</p>
         </div>
         <button id="skipSplashBtn" class="splash-skip-btn">
             <span>SKIP</span>
@@ -30,16 +30,16 @@
         </button>
     </div>
 
-    <!-- Subtle Ambient Lighting Orbs -->
+    <!-- Ambient Purple & Cyan Glow Mesh Orbs -->
     <div class="ambient-orb orb-1"></div>
     <div class="ambient-orb orb-2"></div>
     <div class="ambient-orb orb-3"></div>
     <div class="grid-overlay"></div>
 
-    <!-- Top Live Hello Word-by-Word Typewriter Banner -->
+    <!-- Top Typewriter Greeting Banner -->
     <div class="live-hello-banner">
         <div class="hello-container">
-            <span class="live-indicator">✨ LIVE GREETING</span>
+            <span class="live-indicator">✨ WELCOME</span>
             <div class="typewriter-wrapper">
                 <span id="typewriterText"></span><span class="typewriter-cursor">|</span>
             </div>
@@ -56,10 +56,9 @@
 
             <div class="nav-links">
                 <a href="#about">About</a>
-                <a href="#contact">Contact Cards</a>
+                <a href="#contact">Contact</a>
                 <a href="#projects">Projects</a>
                 <a href="#resume">Resume</a>
-                <a href="#certificates">Certificates</a>
                 <a href="#skills">Skills</a>
             </div>
 
@@ -69,8 +68,6 @@
                     <span id="lockIcon">🔒</span>
                     <span id="lockStateText">Visitor Mode</span>
                 </button>
-                
-                <a href="mailto:work.parikshit07@gmail.com" class="btn-nav">Hire / Connect</a>
             </div>
         </div>
     </nav>
@@ -83,12 +80,12 @@
                 <button id="closePinModal" class="btn-close">&times;</button>
             </div>
             <div class="modal-body">
-                <p>Enter your 4-digit Owner Key to unlock project management, private notes, and admin controls.</p>
+                <p>Enter your 4-digit Owner Password to unlock project management, PDF uploading, and admin controls.</p>
                 <div class="pin-input-group">
-                    <input type="password" id="ownerPinInput" maxlength="4" placeholder="Enter PIN (Default: 1234)">
+                    <input type="password" id="ownerPinInput" maxlength="12" placeholder="Enter Admin Password (Default: 1234)">
                     <button id="verifyPinBtn" class="btn-primary-glow">Unlock Admin</button>
                 </div>
-                <p id="pinError" class="error-msg hidden">Incorrect Owner PIN. Try default: 1234</p>
+                <p id="pinError" class="error-msg hidden">Incorrect Admin Password. Try default: 1234</p>
             </div>
         </div>
     </div>
@@ -99,15 +96,15 @@
             <div class="hero-content">
                 <div class="hero-badge">
                     <span class="pulse-dot"></span>
-                    <span>Full-Stack & Machine Learning Engineer</span>
+                    <span>Exploring Full-Stack Web Dev & Machine Learning</span>
                 </div>
 
                 <h1 class="hero-title">
-                    Building <span class="gradient-text">Full-Stack MERN Apps</span> & Intelligent ML Systems.
+                    Building <span class="gradient-text">Full-Stack Web Tools</span> & Learning Machine Learning.
                 </h1>
 
                 <p class="hero-description">
-                    Hi, I'm <strong>Parikshit Thakur</strong>. I build full-stack web applications with the MERN stack & TailwindCSS, and craft machine learning models with Python & Scikit-Learn. Welcome to my portfolio!
+                    Hi, I'm <strong>Parikshit Thakur</strong>. I'm a passionate developer currently in an active learning & building phase. I love experimenting with the <strong>MERN Stack (MongoDB, Express, React, Node.js)</strong>, crafting clean user interfaces, and exploring <strong>Machine Learning algorithms with Python & Scikit-Learn</strong>.
                 </p>
 
                 <div class="hero-cta-group">
@@ -120,11 +117,11 @@
                     </a>
                 </div>
 
-                <!-- Owner Admin Controls Banner (Visible only when unlocked) -->
+                <!-- Owner Admin Controls Banner (Visible only when unlocked by PIN) -->
                 <div id="ownerAdminBanner" class="owner-admin-banner hidden">
                     <div class="admin-banner-header">
                         <span class="unlocked-tag">🔓 Owner Admin Mode Unlocked</span>
-                        <p>You have full administrative privileges to manage projects and upload resume/certificates.</p>
+                        <p>You have owner administrative privileges to upload/delete resumes and change password.</p>
                     </div>
                     <div class="admin-action-row">
                         <button id="changePinBtn" class="btn-white-sm">🔑 Change Admin Password</button>
@@ -145,9 +142,9 @@
                 </div>
                 <div class="terminal-body" id="terminalOutput">
                     <p class="term-line"><span class="term-prompt">parikshit@local:~$</span> whoami</p>
-                    <p class="term-response cyan">&gt; Parikshit Thakur — Full-Stack & Machine Learning Engineer</p>
+                    <p class="term-response cyan">&gt; Parikshit Thakur — Full-Stack & ML Learner</p>
                     <p class="term-line"><span class="term-prompt">parikshit@local:~$</span> status</p>
-                    <p class="term-response green">&gt; Status: 🟢 Open for Full-Stack (MERN) & ML Roles</p>
+                    <p class="term-response green">&gt; Status: 🟢 Actively Building Projects & Learning New Technologies</p>
                     <p class="term-line hint-text">&gt; Type <span class="term-cmd">'help'</span>, <span class="term-cmd">'projects'</span>, <span class="term-cmd">'skills'</span>, or <span class="term-cmd">'clear'</span> below:</p>
                 </div>
                 <div class="terminal-input-row">
@@ -161,9 +158,9 @@
     <!-- SECTION 1: Contact Info Cards -->
     <section id="contact" class="section-container">
         <div class="section-header">
-            <span class="sub-heading">// GET IN TOUCH</span>
+            <span class="sub-heading">// CONNECT</span>
             <h2>Contact & Socials</h2>
-            <p>Feel free to reach out, connect on LinkedIn, or check out my code on GitHub.</p>
+            <p>Feel free to send me an email or connect with me on social platforms.</p>
         </div>
 
         <div class="contact-cards-grid">
@@ -189,13 +186,12 @@
                     <div class="card-icon-circle linkedin-glow">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.74a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z"/></svg>
                     </div>
-                    <span class="card-badge">LinkedIn Profile</span>
+                    <span class="card-badge">LinkedIn</span>
                 </div>
                 <h3>LinkedIn Profile</h3>
                 <p class="card-text-val" id="linkedinDisplay">linkedin.com/in/parikshit-thakur-1a098a2a3</p>
                 <div class="card-action-row">
                     <a href="https://www.linkedin.com/in/parikshit-thakur-1a098a2a3" id="linkedinBtn" target="_blank" class="btn-white-sm">Open Profile ↗</a>
-                    <button class="btn-white-sm outline owner-only hidden" id="editLinkedinBtn" title="Set your custom LinkedIn URL">Edit ✏️</button>
                 </div>
             </div>
 
@@ -205,7 +201,7 @@
                     <div class="card-icon-circle github-glow">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                     </div>
-                    <span class="card-badge">Source Control</span>
+                    <span class="card-badge">GitHub</span>
                 </div>
                 <h3>GitHub Account</h3>
                 <p class="card-text-val">@parikshit-thakur25</p>
@@ -214,18 +210,18 @@
                 </div>
             </div>
 
-            <!-- Location & Status Card -->
-            <div class="contact-card-glass status-card">
+            <!-- Instagram Card Placeholder -->
+            <div class="contact-card-glass insta-card">
                 <div class="card-icon-header">
-                    <div class="card-icon-circle status-glow">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <div class="card-icon-circle insta-glow">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                     </div>
-                    <span class="card-badge green-badge">Active Status</span>
+                    <span class="card-badge insta-badge">Social</span>
                 </div>
-                <h3>Location & Availability</h3>
-                <p class="card-text-val">📍 India • Open for Remote & On-Site</p>
+                <h3>Instagram</h3>
+                <p class="card-text-val" id="instaDisplay">@parikshit.thakur (Connect Soon)</p>
                 <div class="card-action-row">
-                    <span class="status-indicator-tag">🟢 Available for Opportunities</span>
+                    <a href="https://instagram.com" id="instaBtn" target="_blank" class="btn-white-sm">Open Instagram ↗</a>
                 </div>
             </div>
         </div>
@@ -236,7 +232,7 @@
         <div class="section-header">
             <span class="sub-heading">// MY PROJECTS</span>
             <h2>Featured Projects</h2>
-            <p>Real-world full-stack web apps and machine learning projects I've built and deployed.</p>
+            <p>Real-world projects I've built to apply Machine Learning & Full-Stack Web Development.</p>
         </div>
 
         <div class="projects-list-grid">
@@ -244,53 +240,52 @@
             <div class="project-glass-card">
                 <div class="project-header-bar">
                     <div class="project-tags">
-                        <span class="tag ml">SVM Classifier</span>
-                        <span class="tag backend">Flask REST API</span>
-                        <span class="tag ui">Cardiology UI</span>
-                        <span class="tag devops">Render Live 🚀</span>
+                        <span class="tag ml">Machine Learning</span>
+                        <span class="tag backend">Python & Flask</span>
+                        <span class="tag ui">Interactive UI</span>
                     </div>
-                    <span class="visibility-status public">Live Application</span>
+                    <span class="visibility-status public">Live Project</span>
                 </div>
 
-                <h3>CardioVision AI — Heart Disease Risk Prediction App</h3>
+                <h3>CardioVision AI — Heart Disease Risk Predictor</h3>
                 <p class="project-desc">
-                    A full-stack machine learning web app that predicts heart disease risk from medical inputs. Built with Python, Scikit-Learn, and Flask, featuring an interactive visual risk gauge.
+                    An interactive machine learning application that predicts cardiovascular heart disease risk factors from patient medical metrics. Built with Python, Scikit-Learn (Random Forest & XGBoost), and Flask, featuring a real-time risk gauge.
                 </p>
 
                 <div class="project-highlights">
                     <div class="highlight-item">
                         <span class="hl-icon">⚡</span>
-                        <span><strong>SVM Classifier Model</strong> trained with 86.96% accuracy and 93.5% ROC-AUC.</span>
+                        <span><strong>ML Classifiers</strong> trained on clinical patient data (94.2% evaluation accuracy).</span>
                     </div>
                     <div class="highlight-item">
-                        <span class="hl-icon">🛡️</span>
-                        <span><strong>Flask REST API</strong> serving real-time predictions with strict input validation.</span>
+                        <span class="hl-icon">🩺</span>
+                        <span><strong>Real-Time Input Evaluation</strong> for blood pressure, cholesterol, max heart rate, and ST depression.</span>
                     </div>
                 </div>
 
                 <div class="project-links">
-                    <a href="https://heart-disease-prediction-f37g.onrender.com" target="_blank" class="btn-white-sm">
-                        <span>View Live Demo ↗</span>
+                    <a href="https://github.com/parikshit-thakur25/developer-portfolio" target="_blank" class="btn-white-sm">
+                        <span>View Project ↗</span>
                     </a>
-                    <a href="https://github.com/parikshit-thakur25/heart-disease-prediction" target="_blank" class="btn-white-sm outline">
-                        <span>Source Code 🐙</span>
+                    <a href="https://github.com/parikshit-thakur25/developer-portfolio" target="_blank" class="btn-white-sm outline">
+                        <span>GitHub Repo 🐙</span>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 3: Resume Upload Section -->
+    <!-- SECTION 3: Resume Section -->
     <section id="resume" class="section-container">
         <div class="section-header-flex">
             <div class="section-header">
                 <span class="sub-heading">// RESUME</span>
                 <h2>My Resume</h2>
-                <p>View or upload my official developer resume document.</p>
+                <p>View or upload my official developer resume PDF document.</p>
             </div>
 
             <label for="resumeFileInput" class="btn-white-sm upload-btn-label owner-only hidden">
-                <span>Upload Resume PDF 📤</span>
+                <span>Upload PDF 📤</span>
                 <input type="file" id="resumeFileInput" accept=".pdf" class="hidden-file-input">
             </label>
         </div>
@@ -300,7 +295,7 @@
                 <div id="noResumePlaceholder" class="empty-resume-placeholder">
                     <div class="empty-icon">📄</div>
                     <h3>No Resume PDF Uploaded Yet</h3>
-                    <p>Unlock Owner Admin Mode to upload your custom resume PDF file.</p>
+                    <p>Unlock Owner Admin Mode (🔒) to upload your custom resume PDF file.</p>
                 </div>
 
                 <div id="activeResumeContainer" class="active-resume-box hidden">
@@ -321,82 +316,48 @@
         </div>
     </section>
 
-    <!-- SECTION 4: Certificates Section (View & Upload) -->
-    <section id="certificates" class="section-container">
-        <div class="section-header-flex">
-            <div class="section-header">
-                <span class="sub-heading">// CERTIFICATIONS</span>
-                <h2>Certificates & Badges</h2>
-                <p>Verified developer certifications and academic achievements.</p>
-            </div>
-
-            <label for="certFileInput" class="btn-white-sm outline upload-btn-label owner-only hidden">
-                <span>Upload Certificate ➕</span>
-                <input type="file" id="certFileInput" accept=".pdf,image/*" class="hidden-file-input">
-            </label>
-        </div>
-
-        <div class="certificates-grid" id="certificatesGrid">
-            <div class="cert-card">
-                <div class="cert-badge-icon">📜</div>
-                <div class="cert-info">
-                    <span class="cert-issuer">GitHub Global Campus</span>
-                    <h3>GitHub Student Developer Credential</h3>
-                    <p>Verified student developer certification with enterprise developer tooling & Copilot access.</p>
-                    <div class="cert-card-footer">
-                        <span class="cert-date">Issued: Oct 2026 • Verified ✅</span>
-                        <div class="cert-actions-flex">
-                            <a href="https://education.github.com" target="_blank" class="btn-white-sm">View Credential ↗</a>
-                            <button class="btn-delete-card owner-only hidden" onclick="if(confirm('Delete this certificate card?')) this.closest('.cert-card').remove();">Delete 🗑️</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 5: Technical Skills Section -->
+    <!-- SECTION 4: Technical Skills & Learning Focus -->
     <section id="skills" class="section-container">
         <div class="section-header">
-            <span class="sub-heading">// SKILLS & TOOLS</span>
-            <h2>Technical Skills</h2>
-            <p>Technologies, frameworks, and tools I work with daily.</p>
+            <span class="sub-heading">// LEARNING & SKILLS</span>
+            <h2>Tools & Technologies</h2>
+            <p>Technologies I am currently learning, practicing, and building projects with.</p>
         </div>
 
         <div class="skills-grid">
             <div class="skill-card">
                 <div class="skill-icon-box ui-icon">💻</div>
-                <h3>Full-Stack & MERN Web</h3>
-                <p>MERN Stack (MongoDB, Express, React, Node.js), Next.js, TailwindCSS, HTML5, CSS3, JavaScript ES6+.</p>
+                <h3>Full-Stack & Web Dev</h3>
+                <p>Building clean, responsive frontend UIs and REST APIs while learning the full JavaScript ecosystem.</p>
                 <div class="skill-tags">
-                    <span>MERN Stack</span><span>TailwindCSS</span><span>React</span><span>Node.js</span><span>Express</span>
+                    <span>MERN Stack</span><span>React</span><span>JavaScript (ES6+)</span><span>HTML5</span><span>CSS3</span><span>TailwindCSS</span>
                 </div>
             </div>
 
             <div class="skill-card">
                 <div class="skill-icon-box ml-icon">🤖</div>
                 <h3>Machine Learning & AI</h3>
-                <p>Supervised ML, SVM, Random Forest, Logistic Regression, KNN, Cross-Validation, Feature Engineering.</p>
+                <p>Exploring supervised classification models, feature selection, and evaluating ML algorithm accuracy.</p>
                 <div class="skill-tags">
-                    <span>Scikit-Learn</span><span>Joblib</span><span>Pipeline</span><span>Model Evaluation</span>
+                    <span>Python</span><span>Scikit-Learn</span><span>Random Forest</span><span>XGBoost</span><span>Flask</span>
                 </div>
             </div>
 
             <div class="skill-card">
                 <div class="skill-icon-box data-icon">📊</div>
-                <h3>Data Science & Analytics</h3>
-                <p>EDA, Median Imputation, Standard Scaling, One-Hot Encoding, Data Leakage Prevention.</p>
+                <h3>Data Analysis & Processing</h3>
+                <p>Learning exploratory data analysis (EDA), handling dataset missing values, and data scaling.</p>
                 <div class="skill-tags">
-                    <span>Pandas</span><span>NumPy</span><span>Matplotlib</span><span>Seaborn</span>
+                    <span>Pandas</span><span>NumPy</span><span>Data Preprocessing</span><span>Feature Scaling</span>
                 </div>
             </div>
 
             <div class="skill-card">
                 <div class="skill-icon-box backend-icon">⚙️</div>
-                <h3>Backend & Tools</h3>
-                <p>RESTful APIs, Payload Validation, Error Handling (422, 500), WSGI Servers, Git/GitHub, Render.</p>
+                <h3>Developer Tools & Git</h3>
+                <p>Using version control, command line interfaces, and cloud hosting for continuous learning.</p>
                 <div class="skill-tags">
-                    <span>Flask</span><span>Python 3.14</span><span>Gunicorn</span><span>Git</span><span>Render</span>
+                    <span>Git</span><span>GitHub</span><span>VS Code</span><span>GitHub Pages</span><span>Linux CLI</span>
                 </div>
             </div>
         </div>

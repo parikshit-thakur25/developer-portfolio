@@ -2,24 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Full-Screen Intro Splash Screen Preloader
     initIntroSplash();
 
-    // Live Word-by-Word / Letter-by-Letter Typewriter Greeting
+    // Typewriter Greeting
     initTypewriterGreeting();
 
-    // Editable LinkedIn Handle System
-    initLinkedInHandler();
-
-    // Resume Upload & Download Handlers
+    // Resume Upload & Delete Handler
     initResumeUpload();
 
-    // Certificate Upload Handler
-    initCertUpload();
-
-    // Resume Modal
-    const resumeModal = document.getElementById('resumeModal');
-    const openResumeBtn = document.getElementById('openResumeBtn');
-    const closeResumeBtn = document.getElementById('closeResumeBtn');
-
-    // PIN Admin Modal
+    // PIN Admin Modal Elements
     const pinModal = document.getElementById('pinModal');
     const ownerLockBtn = document.getElementById('ownerLockBtn');
     const closePinModal = document.getElementById('closePinModal');
@@ -39,23 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const terminalOutput = document.getElementById('terminalOutput');
 
     let isOwnerUnlocked = false;
-
-    // Toggle Resume Modal
-    if (openResumeBtn && resumeModal && closeResumeBtn) {
-        openResumeBtn.addEventListener('click', () => {
-            resumeModal.classList.remove('hidden');
-        });
-
-        closeResumeBtn.addEventListener('click', () => {
-            resumeModal.classList.add('hidden');
-        });
-
-        resumeModal.addEventListener('click', (e) => {
-            if (e.target === resumeModal) {
-                resumeModal.classList.add('hidden');
-            }
-        });
-    }
 
     // Owner Lock / Unlock Logic
     if (ownerLockBtn && pinModal) {
@@ -103,15 +75,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function handlePinVerification() {
-        const pin = ownerPinInput.value.trim();
-        const activePin = localStorage.getItem('parikshit_admin_pin') || '1234';
-        if (pin === activePin) {
+        const enteredPin = ownerPinInput.value.trim();
+        const storedPin = localStorage.getItem('parikshit_admin_pin') || '1234';
+        
+        if (enteredPin === storedPin) {
             unlockOwnerMode();
             pinModal.classList.add('hidden');
             ownerPinInput.value = '';
             pinError.classList.add('hidden');
         } else {
             pinError.classList.remove('hidden');
+            ownerPinInput.value = '';
+            ownerPinInput.focus();
         }
     }
 
@@ -119,11 +94,14 @@ document.addEventListener('DOMContentLoaded', () => {
         isOwnerUnlocked = true;
         lockIcon.textContent = '🔓';
         lockStateText.textContent = 'Owner Admin Mode';
-        ownerLockBtn.style.borderColor = '#10b981';
-        ownerLockBtn.style.color = '#10b981';
+        ownerLockBtn.style.borderColor = '#a855f7';
+        ownerLockBtn.style.background = 'rgba(168, 85, 247, 0.25)';
+        
+        if (ownerAdminBanner) {
+            ownerAdminBanner.classList.remove('hidden');
+        }
 
-        if (ownerAdminBanner) ownerAdminBanner.classList.remove('hidden');
-
+        // Show owner upload & delete elements
         document.querySelectorAll('.owner-only').forEach(el => {
             el.classList.remove('hidden');
         });
@@ -133,344 +111,265 @@ document.addEventListener('DOMContentLoaded', () => {
         isOwnerUnlocked = false;
         lockIcon.textContent = '🔒';
         lockStateText.textContent = 'Visitor Mode';
-        ownerLockBtn.style.borderColor = 'var(--card-border)';
-        ownerLockBtn.style.color = 'var(--text-main)';
+        ownerLockBtn.style.borderColor = 'rgba(168, 85, 247, 0.3)';
+        ownerLockBtn.style.background = 'rgba(168, 85, 247, 0.1)';
 
-        if (ownerAdminBanner) ownerAdminBanner.classList.add('hidden');
+        if (ownerAdminBanner) {
+            ownerAdminBanner.classList.add('hidden');
+        }
 
+        // Hide owner elements
         document.querySelectorAll('.owner-only').forEach(el => {
             el.classList.add('hidden');
         });
     }
 
-    // 1-Click Copy Email
+    // Copy Email to Clipboard Handler
     if (copyEmailBtn) {
         copyEmailBtn.addEventListener('click', () => {
             const email = copyEmailBtn.getAttribute('data-email');
             navigator.clipboard.writeText(email).then(() => {
                 const originalText = copyEmailBtn.textContent;
                 copyEmailBtn.textContent = 'Copied! ✅';
-                copyEmailBtn.style.background = '#10b981';
-                copyEmailBtn.style.color = '#fff';
                 setTimeout(() => {
                     copyEmailBtn.textContent = originalText;
-                    copyEmailBtn.style.background = 'rgba(255, 255, 255, 0.05)';
-                    copyEmailBtn.style.color = 'var(--text-main)';
                 }, 2000);
             });
         });
     }
 
-    // Live Word-by-Word Typewriter Greeting Animation
-    function initTypewriterGreeting() {
-        const textElement = document.getElementById('typewriterText');
-        if (!textElement) return;
-
-        const phrases = [
-            "Hello & Welcome! I'm Parikshit Thakur — Full-Stack Developer & ML Engineer.",
-            "Namaste! 🙏 Building Full-Stack MERN Apps, TailwindCSS Interfaces, REST APIs & Scikit-Learn ML.",
-            "Explore my CardioVision AI project & verified credentials below!"
-        ];
-
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typingSpeed = 50;
-
-        function type() {
-            const currentPhrase = phrases[phraseIndex];
-
-            if (isDeleting) {
-                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
-                charIndex--;
-                typingSpeed = 30;
-            } else {
-                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
-                charIndex++;
-                typingSpeed = 60;
-            }
-
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                isDeleting = true;
-                typingSpeed = 2500; // Pause at end of phrase
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                typingSpeed = 500; // Pause before typing next phrase
-            }
-
-            setTimeout(type, typingSpeed);
-        }
-
-        type();
-    }
-
-    // Editable LinkedIn URL Handler
-    function initLinkedInHandler() {
-        const editLinkedinBtn = document.getElementById('editLinkedinBtn');
-        const linkedinBtn = document.getElementById('linkedinBtn');
-        const linkedinDisplay = document.getElementById('linkedinDisplay');
-        const defaultLinkedin = 'https://www.linkedin.com/in/parikshit-thakur-1a098a2a3';
-
-        const savedUrl = localStorage.getItem('parikshit_linkedin_url');
-        if (savedUrl && !savedUrl.includes('parikshit-thakur-1a098a2a3')) {
-            localStorage.removeItem('parikshit_linkedin_url'); // Clear old generic cached URL
-        }
-
-        const activeUrl = localStorage.getItem('parikshit_linkedin_url') || defaultLinkedin;
-        if (linkedinBtn && linkedinDisplay) {
-            linkedinBtn.href = activeUrl;
-            linkedinDisplay.textContent = activeUrl.replace('https://', '').replace('http://', '');
-        }
-
-        if (editLinkedinBtn) {
-            editLinkedinBtn.addEventListener('click', () => {
-                const newUrl = prompt('Enter your LinkedIn profile URL:', linkedinBtn ? linkedinBtn.href : defaultLinkedin);
-                if (newUrl && newUrl.trim() !== '') {
-                    const formattedUrl = newUrl.startsWith('http') ? newUrl.trim() : `https://${newUrl.trim()}`;
-                    localStorage.setItem('parikshit_linkedin_url', formattedUrl);
-                    if (linkedinBtn) linkedinBtn.href = formattedUrl;
-                    if (linkedinDisplay) linkedinDisplay.textContent = formattedUrl.replace('https://', '').replace('http://', '');
-                }
-            });
-        }
-    }
-
-    // Resume Upload & Local Storage PDF Handler
-    function initResumeUpload() {
-        const resumeFileInput = document.getElementById('resumeFileInput');
-        const noResumePlaceholder = document.getElementById('noResumePlaceholder');
-        const activeResumeContainer = document.getElementById('activeResumeContainer');
-        const activeResumeName = document.getElementById('activeResumeName');
-        const viewActiveResumeBtn = document.getElementById('viewActiveResumeBtn');
-        const deleteActiveResumeBtn = document.getElementById('deleteActiveResumeBtn');
-
-        function renderResumeState() {
-            const savedName = localStorage.getItem('parikshit_resume_name');
-            const savedData = localStorage.getItem('parikshit_resume_data');
-
-            if (savedName && savedData && activeResumeContainer && noResumePlaceholder) {
-                noResumePlaceholder.classList.add('hidden');
-                activeResumeContainer.classList.remove('hidden');
-                if (activeResumeName) activeResumeName.textContent = savedName;
-                if (viewActiveResumeBtn) viewActiveResumeBtn.href = savedData;
-            } else if (noResumePlaceholder && activeResumeContainer) {
-                noResumePlaceholder.classList.remove('hidden');
-                activeResumeContainer.classList.add('hidden');
-            }
-        }
-
-        renderResumeState();
-
-        if (resumeFileInput) {
-            resumeFileInput.addEventListener('change', (e) => {
-                const file = e.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = (event) => {
-                        const dataUrl = event.target.result;
-                        localStorage.setItem('parikshit_resume_name', file.name);
-                        localStorage.setItem('parikshit_resume_data', dataUrl);
-                        renderResumeState();
-                        alert(`Successfully uploaded custom resume: ${file.name}!`);
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
-        }
-
-        if (deleteActiveResumeBtn) {
-            deleteActiveResumeBtn.addEventListener('click', () => {
-                if (confirm('Are you sure you want to delete your uploaded resume PDF?')) {
-                    localStorage.removeItem('parikshit_resume_name');
-                    localStorage.removeItem('parikshit_resume_data');
-                    renderResumeState();
-                    alert('Resume PDF deleted.');
-                }
-            });
-        }
-    }
-
-    // Certificate Upload Handler
-    function initCertUpload() {
-        const certFileInput = document.getElementById('certFileInput');
-        const certificatesGrid = document.getElementById('certificatesGrid');
-
-        if (certFileInput && certificatesGrid) {
-            certFileInput.addEventListener('change', (e) => {
-                const file = e.target.files[0];
-                if (file) {
-                    const certTitle = prompt('Enter Certificate Title (e.g. AWS Certified Cloud Practitioner):', file.name.split('.')[0]) || file.name;
-                    const certIssuer = prompt('Enter Issuer / Institution Name:', 'Verified Institution') || 'Verified Institution';
-
-                    const newCard = document.createElement('div');
-                    newCard.className = 'cert-card';
-                    newCard.innerHTML = `
-                        <div class="cert-badge-icon">🏅</div>
-                        <div class="cert-info">
-                            <span class="cert-issuer">${certIssuer}</span>
-                            <h3>${certTitle}</h3>
-                            <p>Custom uploaded credential: ${file.name}</p>
-                            <div class="cert-card-footer">
-                                <span class="cert-date">Uploaded: Just now • Verified ✅</span>
-                                <div class="cert-actions-flex">
-                                    <button class="btn-delete-card owner-only ${isOwnerUnlocked ? '' : 'hidden'}" onclick="if(confirm('Delete this certificate card?')) this.closest('.cert-card').remove();">Delete 🗑️</button>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    certificatesGrid.prepend(newCard);
-                    alert(`Certificate "${certTitle}" added to your credentials section!`);
-                }
-            });
-        }
-    }
-
-    // Cyber Terminal Input Handler
+    // Interactive Cyber Terminal Logic
     if (terminalInput && terminalOutput) {
         terminalInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
-                const cmd = terminalInput.value.trim().toLowerCase();
+                const command = terminalInput.value.trim().toLowerCase();
+                if (command === '') return;
+
+                // Log user command line
+                appendTerminalLine(`parikshit@local:~$ ${command}`, 'term-line');
+                processCommand(command);
+
                 terminalInput.value = '';
-
-                appendTerminalLine(`parikshit@local:~$ ${cmd}`, 'term-line');
-
-                switch (cmd) {
-                    case 'help':
-                        appendTerminalLine('> Commands: whoami, projects, skills, contact, status, domain, clear', 'term-response cyan');
-                        break;
-                    case 'whoami':
-                        appendTerminalLine('> Parikshit Thakur — Full-Stack (MERN) Developer & Machine Learning Engineer', 'term-response cyan');
-                        break;
-                    case 'projects':
-                        appendTerminalLine('> 🚀 CardioVision AI — Clinical Heart Disease Risk Engine (Render Deployed)', 'term-response green');
-                        break;
-                    case 'skills':
-                        appendTerminalLine('> Full-Stack: MERN Stack (MongoDB, Express, React, Node.js), TailwindCSS | ML & Backend: Scikit-Learn, REST APIs, Python 3', 'term-response');
-                        break;
-                    case 'contact':
-                        appendTerminalLine('> ✉️ work.parikshit07@gmail.com | 🌐 parikshit07.tech | 🐙 github.com/parikshit-thakur25', 'term-response green');
-                        break;
-                    case 'status':
-                        appendTerminalLine('> 🟢 Open for Software Engineering & ML Roles / Internships', 'term-response green');
-                        break;
-                    case 'domain':
-                        appendTerminalLine('> 🌐 parikshit07.tech — Claimed via GitHub Student Pack', 'term-response cyan');
-                        break;
-                    case 'clear':
-                        terminalOutput.innerHTML = '';
-                        break;
-                    default:
-                        appendTerminalLine(`> Command not recognized: '${cmd}'. Type 'help' for available commands.`, 'term-response');
-                        break;
-                }
-
                 terminalOutput.scrollTop = terminalOutput.scrollHeight;
             }
         });
     }
 
+    function processCommand(cmd) {
+        switch (cmd) {
+            case 'help':
+                appendTerminalLine('> Available Commands: whoami, status, skills, projects, contact, clear', 'term-response cyan');
+                break;
+            case 'whoami':
+                appendTerminalLine('> Parikshit Thakur — Exploring Full-Stack Web Dev & Machine Learning', 'term-response cyan');
+                break;
+            case 'status':
+                appendTerminalLine('> Status: 🟢 Actively Building Projects & Learning New Technologies', 'term-response green');
+                break;
+            case 'skills':
+                appendTerminalLine('> Stack: MERN (MongoDB, Express, React, Node.js), JavaScript, HTML5, CSS3, Python, Scikit-Learn, Flask', 'term-response cyan');
+                break;
+            case 'projects':
+                appendTerminalLine('> Projects: CardioVision AI (Heart Disease Risk Predictor with Python & Scikit-Learn)', 'term-response green');
+                break;
+            case 'contact':
+                appendTerminalLine('> Email: work.parikshit07@gmail.com | Website: parikshit07.tech', 'term-response cyan');
+                break;
+            case 'clear':
+                terminalOutput.innerHTML = `
+                    <p class="term-line"><span class="term-prompt">parikshit@local:~$</span> clear</p>
+                    <p class="term-response green">&gt; Terminal cleared.</p>
+                `;
+                break;
+            default:
+                appendTerminalLine(`> Command not recognized: '${cmd}'. Type 'help' for available commands.`, 'term-response red');
+                break;
+        }
+    }
+
     function appendTerminalLine(text, className) {
         const p = document.createElement('p');
         p.className = className;
-        p.textContent = text;
+        p.innerHTML = text;
         terminalOutput.appendChild(p);
     }
+});
 
-    // Smooth Scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
+/* Cursive Handwriting Intro Splash Screen Sequence */
+function initIntroSplash() {
+    const splashOverlay = document.getElementById('introSplash');
+    const splashText = document.getElementById('splashText');
+    const skipSplashBtn = document.getElementById('skipSplashBtn');
+
+    if (!splashOverlay || !splashText) return;
+
+    let hasExited = false;
+
+    function exitSplash() {
+        if (hasExited) return;
+        hasExited = true;
+        splashOverlay.classList.add('splash-exit-anim');
+        setTimeout(() => {
+            splashOverlay.style.display = 'none';
+        }, 850);
+    }
+
+    if (skipSplashBtn) {
+        skipSplashBtn.addEventListener('click', exitSplash);
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === 'Escape' || e.key === ' ') {
+            exitSplash();
+        }
     });
 
-    // Full-Screen Intro Splash Animation (hello, -> parikshit -> Main Interface)
-    function initIntroSplash() {
-        const introSplash = document.getElementById('introSplash');
-        const splashText = document.getElementById('splashText');
-        const splashSubtitle = document.getElementById('splashSubtitle');
-        const skipSplashBtn = document.getElementById('skipSplashBtn');
+    const phase1 = "hello ,";
+    const phase2 = "parikshit";
 
-        if (!introSplash || !splashText) return;
+    let charIdx = 0;
+    const typeSpeed = 80;
+    const deleteSpeed = 50;
 
-        let isSkipped = false;
-        let animationTimer = null;
+    function typePhase1() {
+        if (hasExited) return;
+        if (charIdx < phase1.length) {
+            splashText.textContent += phase1.charAt(charIdx);
+            charIdx++;
+            setTimeout(typePhase1, typeSpeed);
+        } else {
+            setTimeout(deletePhase1, 700);
+        }
+    }
 
-        function closeSplash() {
-            if (isSkipped) return;
-            isSkipped = true;
-            if (animationTimer) clearTimeout(animationTimer);
+    function deletePhase1() {
+        if (hasExited) return;
+        if (splashText.textContent.length > 0) {
+            splashText.textContent = splashText.textContent.slice(0, -1);
+            setTimeout(deletePhase1, deleteSpeed);
+        } else {
+            charIdx = 0;
+            setTimeout(typePhase2, 300);
+        }
+    }
 
-            introSplash.classList.add('splash-exit-anim');
-            setTimeout(() => {
-                introSplash.style.display = 'none';
-            }, 850);
+    function typePhase2() {
+        if (hasExited) return;
+        if (charIdx < phase2.length) {
+            splashText.textContent += phase2.charAt(charIdx);
+            charIdx++;
+            setTimeout(typePhase2, typeSpeed);
+        } else {
+            setTimeout(exitSplash, 900);
+        }
+    }
+
+    setTimeout(typePhase1, 300);
+}
+
+/* Live Word-by-Word Typewriter Greeting */
+function initTypewriterGreeting() {
+    const textEl = document.getElementById('typewriterText');
+    if (!textEl) return;
+
+    const phrases = [
+        "Welcome to Parikshit Thakur's Tech Lab 🚀",
+        "Exploring Full-Stack Web Development & ML 🫀",
+        "Building CardioVision AI & Modern Web Apps ⚡"
+    ];
+
+    let phraseIdx = 0;
+    let charIdx = 0;
+    let isDeleting = false;
+
+    function typeLoop() {
+        const currentPhrase = phrases[phraseIdx];
+
+        if (isDeleting) {
+            textEl.textContent = currentPhrase.substring(0, charIdx - 1);
+            charIdx--;
+        } else {
+            textEl.textContent = currentPhrase.substring(0, charIdx + 1);
+            charIdx++;
         }
 
-        if (skipSplashBtn) {
-            skipSplashBtn.addEventListener('click', closeSplash);
+        let speed = isDeleting ? 40 : 70;
+
+        if (!isDeleting && charIdx === currentPhrase.length) {
+            speed = 2200;
+            isDeleting = true;
+        } else if (isDeleting && charIdx === 0) {
+            isDeleting = false;
+            phraseIdx = (phraseIdx + 1) % phrases.length;
+            speed = 400;
         }
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === 'Escape' || e.key === ' ') {
-                closeSplash();
+        setTimeout(typeLoop, speed);
+    }
+
+    typeLoop();
+}
+
+/* Resume PDF Upload & Delete Handler */
+function initResumeUpload() {
+    const resumeFileInput = document.getElementById('resumeFileInput');
+    const noResumePlaceholder = document.getElementById('noResumePlaceholder');
+    const activeResumeContainer = document.getElementById('activeResumeContainer');
+    const activeResumeName = document.getElementById('activeResumeName');
+    const activeResumeDate = document.getElementById('activeResumeDate');
+    const viewActiveResumeBtn = document.getElementById('viewActiveResumeBtn');
+    const deleteActiveResumeBtn = document.getElementById('deleteActiveResumeBtn');
+
+    function renderResumeState() {
+        const storedPdfData = localStorage.getItem('parikshit_resume_data');
+        const storedPdfName = localStorage.getItem('parikshit_resume_name');
+
+        if (storedPdfData && storedPdfName) {
+            if (noResumePlaceholder) noResumePlaceholder.classList.add('hidden');
+            if (activeResumeContainer) activeResumeContainer.classList.remove('hidden');
+
+            if (activeResumeName) activeResumeName.textContent = storedPdfName;
+            if (activeResumeDate) activeResumeDate.textContent = 'Active PDF Document • Verified ✅';
+            if (viewActiveResumeBtn) viewActiveResumeBtn.href = storedPdfData;
+        } else {
+            if (noResumePlaceholder) noResumePlaceholder.classList.remove('hidden');
+            if (activeResumeContainer) activeResumeContainer.classList.add('hidden');
+        }
+    }
+
+    renderResumeState();
+
+    if (resumeFileInput) {
+        resumeFileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            if (file.type !== 'application/pdf') {
+                alert('Please upload a valid PDF file (.pdf)!');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const pdfDataUrl = event.target.result;
+                localStorage.setItem('parikshit_resume_data', pdfDataUrl);
+                localStorage.setItem('parikshit_resume_name', file.name);
+
+                alert(`📄 Resume "${file.name}" uploaded successfully!`);
+                renderResumeState();
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    if (deleteActiveResumeBtn) {
+        deleteActiveResumeBtn.addEventListener('click', () => {
+            if (confirm('Are you sure you want to delete your uploaded resume PDF?')) {
+                localStorage.removeItem('parikshit_resume_data');
+                localStorage.removeItem('parikshit_resume_name');
+                renderResumeState();
+                alert('🗑️ Resume deleted successfully.');
             }
         });
-
-        // Words Sequence
-        const words = ['hello ,', 'parikshit'];
-        let wordIdx = 0;
-        let charIdx = 0;
-        let isDeleting = false;
-
-        function typeStep() {
-            if (isSkipped) return;
-
-            const currentWord = words[wordIdx];
-
-            if (!isDeleting) {
-                splashText.textContent = currentWord.substring(0, charIdx + 1);
-                charIdx++;
-
-                if (charIdx === currentWord.length) {
-                    if (wordIdx === 0) {
-                        // After 'hello ,', pause then delete
-                        animationTimer = setTimeout(() => {
-                            isDeleting = true;
-                            typeStep();
-                        }, 750);
-                    } else if (wordIdx === 1) {
-                        // After 'parikshit', show subtitle & pause before exit
-                        if (splashSubtitle) splashSubtitle.classList.add('show');
-                        animationTimer = setTimeout(() => {
-                            closeSplash();
-                        }, 1200);
-                    }
-                    return;
-                }
-                animationTimer = setTimeout(typeStep, 75);
-            } else {
-                splashText.textContent = currentWord.substring(0, charIdx - 1);
-                charIdx--;
-
-                if (charIdx === 0) {
-                    isDeleting = false;
-                    wordIdx++;
-                    animationTimer = setTimeout(typeStep, 350);
-                    return;
-                }
-                animationTimer = setTimeout(typeStep, 40);
-            }
-        }
-
-        // Start typing after brief initial pause
-        animationTimer = setTimeout(typeStep, 300);
     }
-});
+}
