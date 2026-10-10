@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parikshit Thakur — Developer Portfolio</title>
-    <meta name="description" content="Minimal developer portfolio of Parikshit Thakur.">
+    <title>Parikshit Thakur | Developer Portfolio</title>
+    <meta name="description" content="Portfolio of Parikshit Thakur. Full-Stack MERN Developer and Machine Learning Learner.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Handwriting Intro Splash -->
+    <!-- Full-Screen Intro Splash Screen -->
     <div id="introSplash" class="intro-splash-overlay">
         <div class="splash-ambient-glow"></div>
         <div class="splash-content">
@@ -22,23 +22,25 @@
                 <span id="splashText" class="splash-handwriting-text"></span>
                 <span class="splash-cursor">|</span>
             </div>
-            <p class="splash-subtitle" id="splashSubtitle">// Parikshit Thakur</p>
+            <p class="splash-subtitle" id="splashSubtitle">// parikshit.sys</p>
         </div>
         <button id="skipSplashBtn" class="splash-skip-btn">SKIP ↵</button>
     </div>
 
-    <!-- Ambient Purple Glow Orbs -->
+    <!-- Ambient Mesh Lighting -->
     <div class="ambient-orb orb-1"></div>
     <div class="ambient-orb orb-2"></div>
+    <div class="grid-overlay"></div>
 
-    <!-- Navigation Header -->
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="nav-brand">
-                <span class="brand-code">&lt;</span>Parikshit<span class="gradient-text">.tech</span><span class="brand-code">/&gt;</span>
+                <span class="status-dot-green">●</span> parikshit<span class="gradient-text">.sys</span>
             </a>
 
             <div class="nav-links">
+                <a href="#hero">Home</a>
                 <a href="#about">About</a>
                 <a href="#projects">Projects</a>
                 <a href="#resume">Resume</a>
@@ -54,7 +56,7 @@
         </div>
     </nav>
 
-    <!-- Owner Secret PIN Unlock Modal -->
+    <!-- Owner Secret PIN Modal -->
     <div id="pinModal" class="modal-backdrop hidden">
         <div class="modal-glass-card pin-modal-card">
             <div class="modal-header">
@@ -72,83 +74,176 @@
         </div>
     </div>
 
-    <!-- Main Wrapper -->
+    <!-- Main Content Container -->
     <main class="main-wrapper">
         
         <!-- Hero Section -->
-        <section id="about" class="minimal-hero">
-            <div class="hero-badge">
-                <span class="pulse-dot"></span>
-                <span>Full-Stack & Machine Learning Learner</span>
+        <section id="hero" class="hero-section">
+            <div class="status-pill">
+                <span class="pill-dot"></span>
+                <span>STATUS: OPEN FOR FULL-STACK & ML ROLES (2026)</span>
             </div>
-            
-            <h1 class="hero-title">Parikshit Thakur</h1>
-            
-            <p class="hero-tagline">
-                Building web applications with <strong>MERN Stack</strong> & exploring <strong>Machine Learning</strong> with Python.
-            </p>
 
-            <!-- Admin Banner -->
+            <h1 class="hero-name">
+                Parikshit<br>Thakur<span class="dot-accent">.</span>
+            </h1>
+
+            <!-- Terminal Widget -->
+            <div class="cyber-terminal-card">
+                <div class="terminal-body" id="terminalOutput">
+                    <p class="term-line"><span class="term-prompt">parikshit@local:~$</span> whoami</p>
+                    <p class="term-response">&gt; Full-Stack MERN Developer & Machine Learning Learner</p>
+                    <p class="term-line"><span class="term-prompt">parikshit@local:~$</span> execute --profile</p>
+                    <p class="term-response green">&gt; Building full-stack web applications & ML models.</p>
+                </div>
+                <div class="terminal-input-row">
+                    <span class="term-prompt">parikshit@local:~$</span>
+                    <input type="text" id="terminalInput" placeholder="Type 'help'..." autocomplete="off">
+                </div>
+            </div>
+
+            <!-- Action Buttons Row -->
+            <div class="hero-actions-row">
+                <a href="#projects" class="btn-white-action">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    <span>View Projects</span>
+                </a>
+                <a href="#contact" class="btn-outline-action">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <span>Contact Me</span>
+                </a>
+                <a href="#resume" class="btn-outline-action">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                    <span>Resume</span>
+                </a>
+            </div>
+
+            <!-- Social Icons Row -->
+            <div class="social-icons-row">
+                <a href="https://github.com/parikshit-thakur25" target="_blank" class="social-icon-btn" title="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/parikshit-thakur-1a098a2a3" target="_blank" class="social-icon-btn" title="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.74a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z"/></svg>
+                </a>
+                <a href="https://instagram.com" target="_blank" class="social-icon-btn" title="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                </a>
+                <a href="mailto:work.parikshit07@gmail.com" class="social-icon-btn" title="Email">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </a>
+            </div>
+
+            <!-- Owner Admin Controls Banner (Visible only when unlocked) -->
             <div id="ownerAdminBanner" class="owner-admin-banner hidden">
                 <span class="unlocked-tag">🔓 Owner Admin Mode Unlocked</span>
                 <div class="admin-action-row">
                     <button id="changePinBtn" class="btn-white-sm">🔑 Change Password</button>
-                    <button id="lockNowBtn" class="btn-admin-action danger">Lock</button>
+                    <button id="lockNowBtn" class="btn-admin-action danger">Lock Admin Mode</button>
                 </div>
             </div>
         </section>
 
-        <!-- What I'm Doing Section -->
-        <section class="concise-section">
-            <h2 class="section-title">// What I'm Doing</h2>
-            <div class="chips-container">
-                <span class="tech-chip">⚡ MERN Stack Development</span>
-                <span class="tech-chip">🤖 Machine Learning with Python</span>
-                <span class="tech-chip">🫀 CardioVision AI Predictor</span>
-                <span class="tech-chip">🎨 Clean UI & Glassmorphism</span>
+        <!-- About Section -->
+        <section id="about" class="cyber-section">
+            <div class="profile-card">
+                <div class="card-title-row">
+                    <span class="icon-purple">⚙️</span>
+                    <h3>PROFILE</h3>
+                </div>
+                
+                <p class="profile-bio">
+                    I'm a developer who builds full-stack web applications and explores Machine Learning algorithms. My work focuses on building practical web tools and intelligent diagnostic systems.
+                </p>
+
+                <div class="profile-grid-info">
+                    <div class="info-row">
+                        <span class="label">Focus</span>
+                        <span class="val highlight">Full-Stack MERN & Applied ML</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Primary stack</span>
+                        <span class="val highlight">Python · JavaScript · React · Node.js · Scikit-Learn</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Location</span>
+                        <span class="val">India (UTC+5:30)</span>
+                    </div>
+                </div>
+
+                <div class="timeline-box">
+                    <div class="timeline-header">
+                        <span class="icon-purple">🕒</span>
+                        <h4>TIMELINE</h4>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <span class="timeline-year">2025 — Present</span>
+                        <h4 class="timeline-title">Independent Projects & Learning</h4>
+                        <p class="timeline-desc">Building CardioVision AI, full-stack MERN web applications, and refining Machine Learning pipelines.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-dot cyan"></span>
+                        <span class="timeline-year">2026 Objective</span>
+                        <h4 class="timeline-title">Software / ML Engineering Opportunities</h4>
+                        <p class="timeline-desc">Looking to build web tools, backend APIs, and machine learning features for real-world projects.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="concise-section">
-            <h2 class="section-title">// Projects</h2>
-            <div class="project-minimal-card">
-                <div class="project-card-header">
-                    <h3>🫀 CardioVision AI</h3>
-                    <span class="live-pill">Live Application</span>
+        <section id="projects" class="cyber-section">
+            <div class="section-header-simple">
+                <h2>Featured Projects</h2>
+            </div>
+
+            <div class="project-card-cyber">
+                <div class="project-header">
+                    <span class="project-type-tag">MACHINE LEARNING · FLASK</span>
+                    <a href="https://github.com/parikshit-thakur25/developer-portfolio" target="_blank" class="external-link">↗</a>
                 </div>
-                <p class="project-short-desc">
-                    Clinical Heart Disease Risk Assessment Tool built with Python, Scikit-Learn (94.2% accuracy), and Flask.
+                
+                <h3 class="project-title">CardioVision AI</h3>
+                
+                <p class="project-desc">
+                    Clinical Heart Disease Risk Assessment Tool built with Python, Scikit-Learn (94.2% accuracy), and Flask. Evaluates patient vitals in real time.
                 </p>
-                <div class="project-actions">
+
+                <div class="project-actions-row">
                     <a href="https://github.com/parikshit-thakur25/developer-portfolio" target="_blank" class="btn-white-sm">View Project ↗</a>
-                    <a href="https://github.com/parikshit-thakur25/developer-portfolio" target="_blank" class="btn-white-sm outline">GitHub 🐙</a>
+                    <a href="https://github.com/parikshit-thakur25/developer-portfolio" target="_blank" class="btn-outline-action small">GitHub 🐙</a>
                 </div>
             </div>
         </section>
 
         <!-- Resume Section -->
-        <section id="resume" class="concise-section">
-            <div class="section-title-flex">
-                <h2 class="section-title">// Resume</h2>
+        <section id="resume" class="cyber-section">
+            <div class="section-header-flex">
+                <h2>Resume</h2>
                 <label for="resumeFileInput" class="btn-white-sm upload-btn-label owner-only hidden">
                     <span>Upload PDF 📤</span>
                     <input type="file" id="resumeFileInput" accept=".pdf" class="hidden-file-input">
                 </label>
             </div>
-            
-            <div class="resume-minimal-box">
-                <div id="noResumePlaceholder" class="empty-resume">
-                    <span>📄</span>
-                    <p>No Resume PDF Uploaded Yet</p>
+
+            <div class="resume-cyber-card">
+                <div id="noResumePlaceholder" class="empty-resume-box">
+                    <span class="doc-icon">📄</span>
+                    <div>
+                        <h4>No Resume PDF Uploaded Yet</h4>
+                        <p>Unlock Owner Admin Mode (🔒) to upload your custom resume PDF file.</p>
+                    </div>
                 </div>
 
-                <div id="activeResumeContainer" class="active-resume hidden">
+                <div id="activeResumeContainer" class="active-resume-box hidden">
                     <div class="resume-left">
-                        <span>📑</span>
+                        <span class="doc-icon">📑</span>
                         <div>
                             <h4 id="activeResumeName">Resume PDF</h4>
-                            <span class="active-tag">Active PDF Document ✅</span>
+                            <span class="verified-tag">Active PDF Document • Verified ✅</span>
                         </div>
                     </div>
                     <div class="resume-right">
@@ -160,40 +255,19 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="concise-section">
-            <h2 class="section-title">// Contact Links</h2>
-            <div class="contact-links-grid">
-                <a href="mailto:work.parikshit07@gmail.com" class="contact-btn-card">
-                    <span class="icon">✉️</span>
-                    <div class="contact-info">
-                        <span class="label">Email</span>
-                        <span class="val">work.parikshit07@gmail.com</span>
-                    </div>
-                </a>
+        <section id="contact" class="cyber-section contact-build-section">
+            <h2 class="contact-heading">Let's build something.</h2>
+            <p class="contact-subtext">
+                I'm open to software engineering and ML opportunities for 2026. The fastest way to reach me is email.
+            </p>
 
-                <a href="https://www.linkedin.com/in/parikshit-thakur-1a098a2a3" target="_blank" class="contact-btn-card">
-                    <span class="icon">💼</span>
-                    <div class="contact-info">
-                        <span class="label">LinkedIn</span>
-                        <span class="val">parikshit-thakur</span>
-                    </div>
-                </a>
+            <a href="mailto:work.parikshit07@gmail.com" class="email-direct-link">work.parikshit07@gmail.com</a>
 
-                <a href="https://github.com/parikshit-thakur25" target="_blank" class="contact-btn-card">
-                    <span class="icon">🐙</span>
-                    <div class="contact-info">
-                        <span class="label">GitHub</span>
-                        <span class="val">@parikshit-thakur25</span>
-                    </div>
-                </a>
-
-                <a href="https://instagram.com" target="_blank" class="contact-btn-card">
-                    <span class="icon">📸</span>
-                    <div class="contact-info">
-                        <span class="label">Instagram</span>
-                        <span class="val">@parikshit.thakur</span>
-                    </div>
-                </a>
+            <div class="contact-social-row">
+                <a href="#resume" class="footer-link">Resume</a>
+                <a href="https://www.linkedin.com/in/parikshit-thakur-1a098a2a3" target="_blank" class="footer-link">LinkedIn ↗</a>
+                <a href="https://github.com/parikshit-thakur25" target="_blank" class="footer-link">GitHub ↗</a>
+                <a href="https://instagram.com" target="_blank" class="footer-link">Instagram ↗</a>
             </div>
         </section>
 
